@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrabhuSiddarth — PS Tech Tamil</title>
+    <meta name="description"
+        content="2nd Year B.Tech IT Student · Android Dev · Open Source Contributor · YouTuber. Building real things before placement season.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Bricolage+Grotesque:opsz,wght@12..96,300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg2: #0f0f18;
+            --bg3: #13131f;
+            --surface: #16162a;
+            --border: rgba(255, 255, 255, 0.07);
+            --gold: #f5c842;
+            --gold2: #e8a820;
+            --amber: #ff9c2a;
+            --text: #e8e8f0;
+            --muted: #7a7a9a;
+            --dim: #4a4a6a;
+            --green: #4ade80;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Bricolage Grotesque', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── NOISE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 4rem;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: #000;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--amber);
+            transform: translateY(-1px);
+        }
+
+        /* ── HERO ── */
+        #top {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 4rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 200, 66, 0.08) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .hero-glow2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 156, 42, 0.05) 0%, transparent 70%);
+            bottom: 0;
+            right: 5%;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(245, 200, 66, 0.1);
+            border: 1px solid rgba(245, 200, 66, 0.25);
+            color: var(--gold);
+            padding: 0.35rem 0.9rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-family: 'DM Mono', monospace;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.5rem;
+            width: fit-content;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .hero-name {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .hero-name .accent {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--muted);
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle span {
+            color: var(--amber);
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: rgba(232, 232, 240, 0.75);
+            max-width: 480px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #000;
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--amber);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(245, 200, 66, 0.25);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.8rem 1.8rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Profile card */
+        .hero-right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 320px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--amber));
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--amber));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 1.2rem;
+        }
+
+        .profile-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .profile-handle {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.72rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .profile-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .profile-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-family: 'DM Mono', monospace;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .profile-link:hover {
+            color: var(--gold);
+        }
+
+        /* ── TICKER ── */
+        .ticker-wrap {
+            overflow: hidden;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg2);
+            padding: 0.9rem 0;
+        }
+
+        .ticker {
+            display: flex;
+            gap: 3rem;
+            animation: ticker 30s linear infinite;
+            width: max-content;
+        }
+
+        .ticker-item {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--muted);
+            white-space: nowrap;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .ticker-item span {
+            color: var(--gold);
+            margin-right: 0.5rem;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 6rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
+            line-height: 1.1;
+        }
+
+        /* ── ABOUT ── */
+        #about .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: rgba(232, 232, 240, 0.75);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .about-text p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(245, 200, 66, 0.3);
+        }
+
+        .stat-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+        }
+
+        /* ── STACK / SKILLS ── */
+        #skills .skills-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-group {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .skill-group:hover {
+            border-color: rgba(245, 200, 66, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .skill-group-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .skill-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 0.78rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-family: 'DM Mono', monospace;
+            transition: all 0.2s;
+        }
+
+        .chip:hover {
+            background: rgba(245, 200, 66, 0.08);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── PROJECTS ── */
+        #projects .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--amber));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            transform-origin: left;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245, 200, 66, 0.2);
+        }
+
+        .project-number {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--dim);
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-desc {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .stack-tag {
+            background: rgba(245, 200, 66, 0.08);
+            border: 1px solid rgba(245, 200, 66, 0.15);
+            color: var(--gold);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 3px;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .project-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-family: 'DM Mono', monospace;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-link:hover {
+            color: var(--gold);
+        }
+
+        /* ── ACTIVITIES ── */
+        #activities .act-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .act-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .act-card:hover {
+            border-color: rgba(245, 200, 66, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .act-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .act-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .act-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ── EDUCATION ── */
+        #education .edu-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            max-width: 700px;
+        }
+
+        .edu-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(245, 200, 66, 0.2), rgba(255, 156, 42, 0.1));
+            border: 1px solid rgba(245, 200, 66, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .edu-degree {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-school {
+            font-size: 0.88rem;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-year {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--dim);
+        }
+
+        /* ── CONNECT ── */
+        #connect {
+            background: var(--bg2);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 6rem 4rem;
+        }
+
+        #connect .inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .connect-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .connect-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .connect-card-icon {
+            font-size: 1.6rem;
+        }
+
+        .connect-card-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .connect-card-handle {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+        }
+
+        .connect-card-desc {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--dim);
+        }
+
+        /* ── SCROLL ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            #top {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            #about .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem 1.5rem;
+            }
+
+            #connect {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* ── MLSA BADGE ── */
+        .mlsa-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 120, 212, 0.1);
+            border: 1px solid rgba(0, 120, 212, 0.3);
+            color: #5ba4f5;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-family: 'DM Mono', monospace;
+            margin-top: 1rem;
+            width: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#top" class="nav-logo">PS<span>.</span>TECH</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Stack</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#connect">Connect</a></li>
+        </ul>
+        <a href="#connect" class="nav-cta">Say Hi</a>
+    </nav>
+
+    <!-- HERO -->
+    <div id="top">
+        <div class="hero-glow"></div>
+        <div class="hero-glow2"></div>
+        <div class="hero-grid">
+            <div class="hero-left">
+                <div class="hero-badge">Available for internships & collabs</div>
+                <h1 class="hero-name">
+                    Prabhu<br><span class="accent">Siddarth</span>
+                </h1>
+                <div class="hero-subtitle">
+                    B.Tech IT · SIET Coimbatore ·
+                    <span>@psthetech</span>
+                </div>
+                <p class="hero-desc">
+                    2nd year student building real things — Android apps, AI assistants, safety ML systems — before
+                    placement season hits. Tamil tech content creator. Open source contributor. GDG Chapter Lead
+                    applicant.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">See My Work</a>
+                    <a href="https://github.com/PRABHUSIDDARTH" target="_blank" class="btn-secondary">GitHub →</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="profile-card">
+                    <div class="profile-avatar">PS</div>
+                    <div class="profile-name">PrabhuSiddarth</div>
+                    <div class="profile-handle">@psthetech · PS Tech Tamil</div>
+                    <div class="profile-tags">
+                        <span class="tag">Android Dev</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">Open Source</span>
+                        <span class="tag">ML/CV</span>
+                        <span class="tag">YouTuber</span>
+                    </div>
+                    <div class="profile-links">
+                        <a href="https://github.com/PRABHUSIDDARTH" target="_blank" class="profile-link">⬡ GitHub</a>
+                        <a href="https://www.linkedin.com/in/prabhusiddarth" target="_blank" class="profile-link">in
+                            LinkedIn</a>
+                        <a href="https://youtube.com/@psthetech" target="_blank" class="profile-link">▶ YouTube</a>
+                    </div>
+                    <div class="mlsa-badge">🔵 Microsoft Learn Student Ambassador</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKER -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span class="ticker-item"><span>★</span> Android Dev (Java)</span>
+            <span class="ticker-item"><span>★</span> Spring Boot</span>
+            <span class="ticker-item"><span>★</span> Open Source Contributor — OSCG'26</span>
+            <span class="ticker-item"><span>★</span> PS Tech Tamil — YouTube</span>
+            <span class="ticker-item"><span>★</span> MLSA Community Skiller</span>
+            <span class="ticker-item"><span>★</span> GDG on Campus Applicant</span>
+            <span class="ticker-item"><span>★</span> LeetCode DSA Grinder</span>
+            <span class="ticker-item"><span>★</span> Raspberry Pi Tinkerer</span>
+            <span class="ticker-item"><span>★</span> SIET Coimbatore</span>
+            <span class="ticker-item"><span>★</span> Android Dev (Java)</span>
+            <span class="ticker-item"><span>★</span> Spring Boot</span>
+            <span class="ticker-item"><span>★</span> Open Source Contributor — OSCG'26</span>
+            <span class="ticker-item"><span>★</span> PS Tech Tamil — YouTube</span>
+            <span class="ticker-item"><span>★</span> MLSA Community Skiller</span>
+            <span class="ticker-item"><span>★</span> LeetCode DSA Grinder</span>
+            <span class="ticker-item"><span>★</span> Raspberry Pi Tinkerer</span>
+            <span class="ticker-item"><span>★</span> SIET Coimbatore</span>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-label">01 — About</div>
+        <h2 class="section-title">Builder. Creator.<br>Community guy.</h2>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>I'm a <strong>2nd year B.Tech Information Technology</strong> student at Sri Shakthi Institute of
+                    Engineering and Technology, Coimbatore. I build because building is how I think.</p>
+                <p>From a <strong>fully offline Android music player</strong> to a <strong>self-hosted AI assistant on
+                        Raspberry Pi 5</strong> to a <strong>real-time safety monitoring system with Jetson
+                        Nano</strong> — I build across the stack and across hardware.</p>
+                <p>Outside code, I run <strong>PS Tech Tamil</strong>, a YouTube channel aimed at making tech accessible
+                    to Tamil-speaking students. I'm a <strong>Microsoft Learn Student Ambassador</strong> and actively
+                    contributing to open source through <strong>OSCG'26</strong>.</p>
+                <p>I cracked OSINT on a fake fintech company that tried to scam students, built an awareness post that
+                    went around LinkedIn. Doing real things matters more to me than resume padding.</p>
+            </div>
+            <div class="stats-grid reveal">
+                <div class="stat-card">
+                    <span class="stat-num">2nd</span>
+                    <span class="stat-label">Year B.Tech IT</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">6+</span>
+                    <span class="stat-label">Real Projects</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">OSCG</span>
+                    <span class="stat-label">'26 Contributor</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">MLSA</span>
+                    <span class="stat-label">Community Skiller</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-label">02 — Projects</div>
+        <h2 class="section-title">Things I've built<br>that actually work.</h2>
+        <div class="projects-grid">
+
+            <div class="project-card reveal">
+                <div class="project-number">01</div>
+                <div class="project-title">Swara — Offline Music Player</div>
+                <div class="project-desc">A fully offline Android music player built in Java. Royal purple & gold custom
+                    theme, MediaPlayer-based playback in a Bound Service, RecyclerView song list, SeekBar with
+                    Handler/Runnable, AudioFocus, and a polished custom PlayerActivity. No internet. No ads. Pure local
+                    music.</div>
+                <div class="project-stack">
+                    <span class="stack-tag">Java</span>
+                    <span class="stack-tag">Android Studio</span>
+                    <span class="stack-tag">MediaPlayer API</span>
+                    <span class="stack-tag">Bound Service</span>
+                    <span class="stack-tag">AudioFocus</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/PRABHUSIDDARTH/SwaraApp" target="_blank" class="project-link">⬡
+                        GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-number">02</div>
+                <div class="project-title">Self-Hosted AI Assistant (Raspberry Pi 5)</div>
+                <div class="project-desc">Built a private AI assistant running locally on a Raspberry Pi 5 — Ollama with
+                    Mistral 7B, Java Spring Boot backend, PostgreSQL, Nginx reverse proxy, and a dark-themed chat UI
+                    with markdown rendering. 100% offline and self-hosted.</div>
+                <div class="project-stack">
+                    <span class="stack-tag">Raspberry Pi 5</span>
+                    <span class="stack-tag">Ollama / Mistral 7B</span>
+                    <span class="stack-tag">Spring Boot</span>
+                    <span class="stack-tag">PostgreSQL</span>
+                    <span class="stack-tag">Nginx</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/PRABHUSIDDARTH" target="_blank" class="project-link">⬡ GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-number">03</div>
+                <div class="project-title">Safety Monitoring System (Jetson Nano)</div>
+                <div class="project-desc">Real-time helmet and face mask compliance detection using Jetson Nano P3450,
+                    Raspberry Pi 5, and Intel RealSense D435. TensorRT-optimized model, SQLite logging, Flask web
+                    dashboard, and a cooldown-based violation tracker.</div>
+                <div class="project-stack">
+                    <span class="stack-tag">Jetson Nano</span>
+                    <span class="stack-tag">TensorRT</span>
+                    <span class="stack-tag">Intel RealSense</span>
+                    <span class="stack-tag">Flask</span>
+                    <span class="stack-tag">SQLite</span>
+                    <span class="stack-tag">Python</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/PRABHUSIDDARTH/helmet-face-mask-detection" target="_blank"
+                        class="project-link">⬡ GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-number">04</div>
+                <div class="project-title">Distraction Monitor AI</div>
+                <div class="project-desc">An AI-powered tool to detect and monitor user distraction in real-time. Built
+                    as part of early explorations into CV-based productivity tools.</div>
+                <div class="project-stack">
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">Computer Vision</span>
+                    <span class="stack-tag">AI/ML</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/PRABHUSIDDARTH/distraction-monitor-v1" target="_blank"
+                        class="project-link">⬡ GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-number">05</div>
+                <div class="project-title">Task Management System</div>
+                <div class="project-desc">A Java-based task management system demonstrating core OOP principles,
+                    persistence, and CRUD workflows — one of the foundational projects in the Java learning journey.
+                </div>
+                <div class="project-stack">
+                    <span class="stack-tag">Java</span>
+                    <span class="stack-tag">OOP</span>
+                    <span class="stack-tag">SQL</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/PRABHUSIDDARTH" target="_blank" class="project-link">⬡ GitHub</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-number">06</div>
+                <div class="project-title">Zorvyn Fintech OSINT Expose</div>
+                <div class="project-desc">After passing a fake fintech company's SDE Intern screening, dug deep into
+                    OSINT — CEO profile inconsistencies, domain hopping, automated scam email sequences. Built a
+                    LinkedIn awareness post that reached the student community. Real research. Real impact.</div>
+                <div class="project-stack">
+                    <span class="stack-tag">OSINT</span>
+                    <span class="stack-tag">Research</span>
+                    <span class="stack-tag">Community</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://www.linkedin.com/in/prabhusiddarth" target="_blank" class="project-link">in
+                        LinkedIn Post</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="section-label">03 — Tech Stack</div>
+        <h2 class="section-title">Tools I work with.</h2>
+        <div class="skills-wrap">
+            <div class="skill-group reveal">
+                <div class="skill-group-title">Languages</div>
+                <div class="skill-chips">
+                    <span class="chip">Java</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">C</span>
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">HTML/CSS</span>
+                    <span class="chip">SQL</span>
+                </div>
+            </div>
+            <div class="skill-group reveal">
+                <div class="skill-group-title">Android & Mobile</div>
+                <div class="skill-chips">
+                    <span class="chip">Android Studio</span>
+                    <span class="chip">MediaPlayer API</span>
+                    <span class="chip">Bound Services</span>
+                    <span class="chip">RecyclerView</span>
+                    <span class="chip">AudioFocus</span>
+                </div>
+            </div>
+            <div class="skill-group reveal">
+                <div class="skill-group-title">Backend & Infra</div>
+                <div class="skill-chips">
+                    <span class="chip">Spring Boot</span>
+                    <span class="chip">Spring Security</span>
+                    <span class="chip">JWT</span>
+                    <span class="chip">REST APIs</span>
+                    <span class="chip">PostgreSQL</span>
+                    <span class="chip">MongoDB</span>
+                    <span class="chip">Nginx</span>
+                </div>
+            </div>
+            <div class="skill-group reveal">
+                <div class="skill-group-title">AI / ML / Edge</div>
+                <div class="skill-chips">
+                    <span class="chip">Ollama (Mistral 7B)</span>
+                    <span class="chip">TensorRT</span>
+                    <span class="chip">OpenAI Whisper</span>
+                    <span class="chip">Flask</span>
+                    <span class="chip">Jetson Nano</span>
+                    <span class="chip">Raspberry Pi</span>
+                    <span class="chip">Intel RealSense</span>
+                </div>
+            </div>
+            <div class="skill-group reveal">
+                <div class="skill-group-title">Cloud & Tools</div>
+                <div class="skill-chips">
+                    <span class="chip">Azure AI</span>
+                    <span class="chip">Google Colab</span>
+                    <span class="chip">Git & GitHub</span>
+                    <span class="chip">Docker (basics)</span>
+                </div>
+            </div>
+            <div class="skill-group reveal">
+                <div class="skill-group-title">DSA Focus</div>
+                <div class="skill-chips">
+                    <span class="chip">Arrays & Strings</span>
+                    <span class="chip">Hashmaps</span>
+                    <span class="chip">Sliding Window</span>
+                    <span class="chip">Stack (Monotonic)</span>
+                    <span class="chip">Prefix Sums</span>
+                    <span class="chip">Digit DP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVITIES -->
+    <section id="activities">
+        <div class="section-label">04 — Activities</div>
+        <h2 class="section-title">Beyond the code.</h2>
+        <div class="act-grid">
+            <div class="act-card reveal">
+                <div class="act-icon">▶</div>
+                <div class="act-title">PS Tech Tamil — YouTube</div>
+                <div class="act-desc">Running a YouTube channel (@psthetech) making tech content accessible to
+                    Tamil-speaking students — Java, DSA, Android, open source, and more.</div>
+            </div>
+            <div class="act-card reveal">
+                <div class="act-icon">🌐</div>
+                <div class="act-title">Open Source — OSCG'26</div>
+                <div class="act-desc">Active open source contributor through OSCG'26 (Open Source Club Gig), building in
+                    public and contributing to community-driven projects.</div>
+            </div>
+            <div class="act-card reveal">
+                <div class="act-icon">🔵</div>
+                <div class="act-title">Microsoft Learn Student Ambassador</div>
+                <div class="act-desc">Pursuing the MLSA Community Skiller path — sharing resources, growing the student
+                    tech community, and building learning streaks on Microsoft Learn.</div>
+            </div>
+
+            <div class="act-card reveal">
+                <div class="act-icon">💡</div>
+                <div class="act-title">LeetCode — DSA Practice</div>
+                <div class="act-desc">Regular LeetCode grinder in Java — weekly contests, activity badges, and working
+                    through Striver's A-Z DSA sheet. Strong in arrays, stacks, sliding window.</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <div class="section-label">05 — Education</div>
+        <h2 class="section-title">Where I study.</h2>
+        <div class="edu-card reveal">
+            <div class="edu-icon">🎓</div>
+            <div>
+                <div class="edu-degree">B.Tech — Information Technology</div>
+                <div class="edu-school">Sri Shakthi Institute of Engineering and Technology, Coimbatore</div>
+                <div class="edu-year">2nd Year · 2023 – 2027 (expected)</div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT -->
+    <div id="connect">
+        <div class="inner">
+            <div class="section-label">06 — Connect</div>
+            <h2 class="section-title">Let's build something.</h2>
+            <p style="color:var(--muted); max-width: 520px; line-height:1.7; font-size:0.95rem;">
+                Whether you want to collaborate on a project, talk open source, discuss tech in Tamil, or just say hi —
+                I'm reachable.
+            </p>
+            <div class="connect-grid">
+                <a href="https://github.com/PRABHUSIDDARTH" target="_blank" class="connect-card">
+                    <div class="connect-card-icon">⬡</div>
+                    <div class="connect-card-name">GitHub</div>
+                    <div class="connect-card-handle">@PRABHUSIDDARTH</div>
+                    <div class="connect-card-desc">All my projects, repos, and open source contributions.</div>
+                </a>
+                <a href="https://www.linkedin.com/in/prabhusiddarth" target="_blank" class="connect-card">
+                    <div class="connect-card-icon">in</div>
+                    <div class="connect-card-name">LinkedIn</div>
+                    <div class="connect-card-handle">PrabhuSiddarth</div>
+                    <div class="connect-card-desc">Professional updates, posts, and internship journey.</div>
+                </a>
+                <a href="https://youtube.com/@psthetech" target="_blank" class="connect-card">
+                    <div class="connect-card-icon">▶</div>
+                    <div class="connect-card-name">YouTube</div>
+                    <div class="connect-card-handle">@psthetech · PS Tech Tamil</div>
+                    <div class="connect-card-desc">Tech content for Tamil-speaking students.</div>
+                </a>
+                <a href="https://leetcode.com/PRABHUSIDDARTH" target="_blank" class="connect-card">
+                    <div class="connect-card-icon">⚙</div>
+                    <div class="connect-card-name">LeetCode</div>
+                    <div class="connect-card-handle">PRABHUSIDDARTH</div>
+                    <div class="connect-card-desc">DSA practice, contests, and problem solving in Java.</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">PS<span>.</span>TECH</div>
+        <div class="footer-copy">© 2025 PrabhuSiddarth · Built with zero frameworks. All real.</div>
+        <div class="footer-copy">Coimbatore, Tamil Nadu</div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+
+        // Counter animation for stat cards
+        function animateCounter(el, target, suffix = '') {
+            let start = 0;
+            const duration = 1200;
+            const step = (timestamp) => {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        }
+    </script>
+
+</body>
+
+</html>
