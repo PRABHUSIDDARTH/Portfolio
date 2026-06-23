@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Fira+Sans:wght@300;400;500;600&family=Fira+Code:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-custom: #efffff;
+  --color-on-primary-custom: #003739;
+  --color-primary-container-custom: #00f7ff;
+  --color-on-primary-container-custom: #006d71;
+  --color-secondary-custom: #d2bbff;
+  --color-secondary-container-custom: #6001d1;
+  --color-on-secondary-container-custom: #c9aeff;
+  --color-background-custom: #131318;
+  --color-surface-custom: #131318;
+  --color-surface-container-custom: #1f1f25;
+  --color-surface-container-high-custom: #2a292f;
+  --color-surface-container-highest-custom: #35343a;
+  --color-surface-container-lowest-custom: #0e0e13;
+  --color-on-surface-custom: #e4e1e9;
+  --color-on-surface-variant-custom: #b9caca;
+  --color-outline-custom: #849494;
+  --color-outline-variant-custom: #3a4a4a;
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "Fira Code", monospace;
+  --font-label: "Fira Sans", sans-serif;
+}
+
+/* Custom Base Rules */
+body {
+  background-color: #0d0d12;
+  color: #e4e1e9;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Base scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #131318;
+}
+::-webkit-scrollbar-thumb {
+  background: #00f7ff;
+  border-radius: 9999px;
+}
+
+/* Grain Animation and Background Orbs */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -1;
+  opacity: 0.12;
+  animation: orb-float 25s infinite alternate ease-in-out;
+}
+
+@keyframes orb-float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -40px) scale(1.1); }
+  100% { transform: translate(-30px, 80px) scale(0.95); }
+}
+
+/* Design treatments */
+.glass-card {
+  background: rgba(19, 19, 24, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(132, 148, 148, 0.15);
+}
+
+.neo-btn {
+  background: #111118;
+  box-shadow: 6px 6px 12px #060608, -4px -4px 10px #1c1c28;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neo-btn:hover {
+  box-shadow: inset 4px 4px 8px #060608, inset -4px -4px 8px #1c1c28;
+  transform: translateY(1px);
+}
+
+.neo-btn:active {
+  transform: scale(0.98);
+}
+
+.neo-inset {
+  background: #111118;
+  box-shadow: inset 4px 4px 8px #060608, inset -4px -4px 8px #1c1c28;
+}
+
+.brutalist-card {
+  background: #0a0a0f;
+  border: 3px solid #00f7ff;
+  box-shadow: 8px 8px 0px #00f7ff;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brutalist-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px #00f7ff;
+}
+
+.brutalist-gold {
+  border: 3px solid #FFA116;
+  box-shadow: 8px 8px 0px #FFA116;
+}
+
+.brutalist-gold:hover {
+  box-shadow: 12px 12px 0px #FFA116;
+}
+
+.hire-me-glow {
+  animation: cyan-breathe 4s infinite ease-in-out;
+}
+
+@keyframes cyan-breathe {
+  0%, 100% {
+    border-color: rgba(0, 247, 255, 0.2);
+    box-shadow: 0 0 8px rgba(0, 247, 255, 0.08);
+  }
+  50% {
+    border-color: rgba(0, 247, 255, 0.7);
+    box-shadow: 0 0 16px rgba(0, 247, 255, 0.25);
+  }
+}
+
+/* Animations and Cursor */
+.typewriter::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.scale-down-click {
+  transition: transform 0.1s ease;
+}
+.scale-down-click:active {
+  transform: scale(0.96);
+}
+
+/* Print Overrides to ensure resume compiles perfectly to paper/PDF */
+@media print {
+  /* Hide overall layout elements */
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  #portfolio-flow, nav, footer, #app-workspace > *:not(#resume-modal-overlay), #resume-modal-overlay > *:not(.my-auto), #resume-modal-overlay .sticky {
+    display: none !important;
+  }
+  #resume-modal-overlay {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  #resume-modal-overlay > div {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #printable-resume-frameBox {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 2.5cm !important; /* Professional standard print border margins */
+    margin: 0 !important;
+    background: white !important;
+    color: black !important;
+  }
+}
