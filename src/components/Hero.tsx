@@ -11,7 +11,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
   
   // Typewriter implementation
   const phrases = [
-    "Problem Solver 250+_",
+    "Problem Solver 300+_",
     "Backend Engineer_",
     "Android Developer_",
     "AI Systems Builder_",
@@ -28,7 +28,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
       setSolvedCount((prev) => {
         if (prev >= 250) {
           clearInterval(solTimer);
-          return 250;
+          return 300;
         }
         return prev + 5;
       });
@@ -114,7 +114,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
           </div>
           <div className="neo-inset p-4 rounded-xl border border-white/5 group hover:border-[#00f7ff]/20 transition-all duration-300">
             <p className="font-display text-3xl font-black text-[#efffff]">
-              8.28
+              8.43
             </p>
             <p className="font-label text-[10px] text-on-surface-variant-custom tracking-wider uppercase font-bold mt-1">CGPA Metric</p>
           </div>
@@ -134,7 +134,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
 
         <div className="max-w-3xl mb-12">
           <p className="font-sans text-sm md:text-base text-on-surface-variant-custom leading-relaxed">
-            B.Tech Information Technology candidate at Sri Shakthi Institute, Coimbatore. Highly invested in assembling distributed client-server systems, Native Android architectures, and LLM-powered socratic diagnostics tools. Sharpened logic with over 250 solved algorithmic challenges. Always compiling.
+            B.Tech Information Technology candidate at Sri Shakthi Institute, Coimbatore. Highly invested in assembling distributed client-server systems, Native Android architectures, and LLM-powered socratic diagnostics tools. Sharpened logic with over 300 solved algorithmic challenges. Always compiling.
           </p>
         </div>
 
