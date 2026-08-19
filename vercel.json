@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/sidd-ai", "destination": "/sidd-ai.html" },
+    { "source": "/((?!assets|sidd-ai|.*\\..*).*)", "destination": "/index.html" }
+  ]
+}
