@@ -1,4 +1,4 @@
-# ⚡ Prabhu Siddarth A V — Software Development Engineer Portfolio
+# Prabhu Siddarth A V — Software Development Engineer Portfolio
 
 [![Portfolio Live](https://img.shields.io/badge/Portfolio-Live_Site-4FD1C5?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-prabhusiddarth.vercel.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-PRABHUSIDDARTH-E8A33D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/PRABHUSIDDARTH)
@@ -40,8 +40,8 @@ A dedicated, fully 3D interactive landing page for **[sidd-ai](https://github.co
 
 | Category | Technologies |
 |---|---|
-| **Languages** | Java (11+), Python, C, C++, JavaScript (ES6+), TypeScript, SQL |
-| **Backend & Systems** | Node.js, Express, FastAPI, Spring Boot, REST APIs, System Architecture |
+| **Languages** | Java (11+), Python, C, JavaScript (ES6+), TypeScript, SQL |
+| **Backend & Systems** | FastAPI, Spring Boot, REST APIs, System Architecture |
 | **Frontend & 3D** | React 18, Vite, Three.js, React Three Fiber, Framer Motion, Tailwind CSS, HTML5/CSS3 |
 | **Android Development** | Java Native Android, MVVM, Clean Architecture, ExoPlayer, Room DB, Jetpack Components |
 | **Cloud & DevOps** | Docker, Kubernetes, AWS S3, Google Cloud Storage, Azure Blob, Git, Linux |
