@@ -1,43 +1,28 @@
-export interface TimelineItem {
-  year: string;
-  title: string;
-  subtitle: string;
-  details?: string;
-}
-
-export interface SkillGroup {
-  title: string;
-  icon: string;
-  tags: string[];
-  subtext?: string;
-}
-
 export interface Project {
   id: string;
   title: string;
   description: string;
-  badge: string;
-  category: string;
+  longDesc: string;
   techs: string[];
   github: string;
-  extLink?: string;
-  content: string;
-  featured: boolean;
-  featuredColor?: "cyan" | "gold";
-  iconName: string;
-}
-
-export interface LeetCodeProblem {
-  id: string;
-  title: string;
-  difficulty: "Easy" | "Medium" | "Hard";
-  description: string;
   category: string;
-  initialCode: string;
-  testCases: { input: string; expected: string }[];
+  stars: number;
+  featured: boolean;
+  badge: string;
+  color: string;
 }
 
-export interface ChatMessage {
-  role: "user" | "assistant";
-  text: string;
+export interface TechNode {
+  id: string;
+  label: string;
+  category: 'language' | 'framework' | 'tool' | 'ai' | 'infra';
+  x: number;
+  y: number;
+  z: number;
+}
+
+export interface NavItem {
+  index: string;
+  label: string;
+  section: number;
 }

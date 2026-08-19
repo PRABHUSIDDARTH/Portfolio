@@ -21,6 +21,9 @@
       ]
     },
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   }
 }

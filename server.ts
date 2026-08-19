@@ -153,6 +153,15 @@ app.post("/api/phishing/scan", (req, res) => {
   }
 });
 
+// Dedicated /sidd-ai route — serves the standalone product landing page
+app.get("/sidd-ai", (req, res) => {
+  const htmlPath = path.join(process.cwd(), "public", "sidd-ai.html");
+  res.sendFile(htmlPath);
+});
+
+// Serve static public assets (logo, etc.) from /assets
+app.use("/assets", express.static(path.join(process.cwd(), "assets")));
+
 // Boot Vite middleware or serve built asset files
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {

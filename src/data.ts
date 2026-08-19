@@ -1,328 +1,209 @@
-import { Project, SkillGroup, TimelineItem, LeetCodeProblem } from "./types";
+import { Project, TechNode } from './types';
 
-export const TIMELINE_DATA: TimelineItem[] = [
-  {
-    year: "2026",
-    title: "RLaaS Release",
-    subtitle: "Full Architecture Finalization",
-    details: "Launched distributed rate limiting services supported by Redis clustering and LUA scripts, achieving sub-millisecond latencies under high concurrency."
-  },
-  {
-    year: "2025",
-    title: "Microsoft Azure AI Internship",
-    subtitle: "AICTE Virtual Program · Certified",
-    details: "Explored advanced machine learning algorithms, trained customized vision trackers, and specialized in deploying pipeline solutions with azure orchestration."
-  },
-  {
-    year: "2025",
-    title: "IBM × EDUNET Internship",
-    subtitle: "Frontend Developer · Certified",
-    details: "Built interactive dashboards and single-page client engines, implementing responsive state management models and visual ergonomics."
-  },
-  {
-    year: "2025",
-    title: "AlgoMentor AI Project",
-    subtitle: "LLM Integration & Deployment",
-    details: "Architected socratic code evaluation mechanisms utilizing the Gemini API, structuring helpful prompting frameworks for DSA candidates."
-  },
-  {
-    year: "2024 - Present",
-    title: "B.Tech IT · Sri Shakthi",
-    subtitle: "Academic Foundations & Core CS",
-    details: "Studying Data Structures & Algorithms, Operating Systems, Database Management, and Object-Oriented Software Design at Sri Shakthi Institute in Coimbatore."
-  },
-  {
-    year: "2023 - 2025",
-    title: "HSC Completion",
-    subtitle: "Strong Mathematical Base",
-    details: "Consolidated a solid foundation in calculus and computer logic, starting in-depth self-teaching of programming languages."
-  }
-];
+export const PORTFOLIO_META = {
+  name: 'Prabhu Siddarth A V',
+  nameShort: 'Prabhu Siddarth',
+  role: 'Software Development Engineer',
+  college: 'Sri Shakthi Institute of Engineering & Technology',
+  degree: 'B.Tech Information Technology · 2024 – 2028',
+  cgpa: '8.26',
+  leetcode: '350+',
+  projectCount: '12+',
+  email: 'prabhusiddarth37@gmail.com',
+  phone: '+91 7418981007',
+  github: 'https://github.com/PRABHUSIDDARTH',
+  linkedin: 'https://www.linkedin.com/in/prabhu-siddarth-av/',
+  leetcodeUrl: 'https://leetcode.com/u/psTech/',
+  youtube: 'https://www.youtube.com/@psthetech',
+  instagram: 'https://www.instagram.com/they_callme_ps',
+  location: 'Coimbatore, Tamil Nadu',
+  bio: "I'm a third-year IT student who ships backend systems and Android apps in the time most people spend picking a framework. I've solved 350+ algorithmic problems and built everything from distributed rate limiters to AI attention trackers — real tools, not tutorial clones. I'm not done compiling.",
+};
 
-export const SKILL_GROUPS: SkillGroup[] = [
+export const PROJECTS: Project[] = [
   {
-    title: "LANGUAGES",
-    icon: "code",
-    tags: ["JAVA", "PYTHON", "C", "JAVASCRIPT", "TYPESCRIPT"]
-  },
-  {
-    title: "MOBILE & WEB",
-    icon: "smartphone",
-    tags: ["ANDROID (JAVA)", "ANDROID STUDIO", "HTML5", "CSS3", "REACT", "TAILWIND CSS"]
-  },
-  {
-    title: "AI / ML",
-    icon: "psychology",
-    tags: ["TENSORFLOW", "OPENCV", "MEDIAPIPE", "GEMINI API"]
-  },
-  {
-    title: "BACKEND & DATABASES",
-    icon: "storage",
-    tags: ["FASTAPI", "SPRING BOOT", "POSTGRESQL", "REDIS", "MONGODB", "SQL"]
-  },
-  {
-    title: "TOOLS & DEVOPS",
-    icon: "build",
-    tags: ["GIT", "DOCKER", "LINUX", "VS CODE", "GCR", "POSTMAN"]
-  },
-  {
-    title: "HARDWARE & IOT",
-    icon: "memory",
-    tags: ["RASPBERRY PI", "ARDUINO", "EMBEDDED SYSTEMS"]
-  }
-];
-
-export const PROJECTS_DATA: Project[] = [
-  {
-    id: "rlaas",
-    title: "RLaaS — Rate Limiter as a Service",
-    description: "Distributed API protection framework supporting 5 algorithms. Redis-backed for high-throughput microservices.",
-    badge: "FEATURED_GOLD",
-    category: "Distributed Systems & Cloud",
-    techs: ["Java", "Spring Boot", "Redis"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "shield",
+    id: 'sidd-ai',
+    title: 'Sidd-AI',
+    description: 'Framework-agnostic Java SDK — call OpenAI, Gemini, Claude, Grok, NIM, Kimi, or Ollama with one line.',
+    longDesc: 'AiClient.chatQuick("gpt-4o", prompt) — that\'s the whole setup. A lightweight Java SDK routing to 7 AI providers by model-string prefix. No Spring, no DI, no YAML. Builder pattern for multi-key production apps, unified exception hierarchy, and a fat-jar for no-build-tool usage. Apache 2.0 licensed.',
+    techs: ['Java', 'SDK', 'OpenAI', 'Gemini', 'Claude', 'Grok', 'NIM', 'Ollama'],
+    github: 'https://github.com/PRABHUSIDDARTH/sidd-ai',
+    category: 'Java SDK · v1.0.4 · Apache 2.0',
+    stars: 6,
     featured: true,
-    featuredColor: "gold",
-    content: "An enterprise-grade rate-limiting solution configured to secure high-concurrency environments. Utilizes Token Bucket, Leaky Bucket, Sliding Window Log, Fixed Window, and Sliding Window Counter. Supports low latency via inline Redis LUA algorithms."
+    badge: 'JAVA SDK',
+    color: '#F2A65A',
   },
   {
-    id: "nexus",
-    title: "NexusCloud Orchestration Engine",
-    description: "Multi-Cloud Orchestration engine for seamless resource provisioning across providers.",
-    badge: "CORE_SYSTEM",
-    category: "Cloud Infrastructure",
-    techs: ["Python", "Docker", "Kubernetes"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "cloud",
+    id: 'nexuscloud',
+    title: 'NexusCloud',
+    description: 'BYOC multi-cloud storage orchestration — AWS S3, GCS, Azure Blob through one API.',
+    longDesc: 'Bring-Your-Own-Cloud orchestration engine that abstracts AWS S3, Google Cloud Storage, and Azure Blob behind a unified provisioning API. Lightweight CLI for managing compute pods and dynamic load balancers across providers.',
+    techs: ['Python', 'Docker', 'Kubernetes', 'FastAPI'],
+    github: 'https://github.com/PRABHUSIDDARTH/NexusCloud',
+    category: 'Cloud Infrastructure',
+    stars: 0,
     featured: true,
-    featuredColor: "gold",
-    content: "Standardized orchestration engine that interfaces with cluster deployment providers. Provides a lightweight CLI interface to automatically manage compute pods and dynamic load balancers."
+    badge: 'CLOUD',
+    color: '#5EC8D8',
   },
   {
-    id: "swara",
-    title: "Swara Music Player",
-    description: "Offline Android Music Player built with modern architectural patterns for high efficiency.",
-    badge: "MOBILE_APP",
-    category: "Android Mobile",
-    techs: ["Kotlin", "Java", "ExoPlayer"],
-    github: "https://github.com/PRABHUSIDDARTH/SwaraApp",
-    iconName: "music",
-    featured: false,
-    content: "Native Android application implementing Clean Architecture + MVVM models. Employs ExoPlayer integration, dynamic playlist curation, notification widget channels, and sound card adjustments."
+    id: 'swara',
+    title: 'Swara App',
+    description: 'Offline Android music player — Clean Architecture, ExoPlayer, Room Database.',
+    longDesc: 'Native Android music player implementing Clean Architecture + MVVM. Background playback via Bound Services, Room Database for playlists, MediaPlayer/ExoPlayer integration, notification widgets, and dynamic sound card adjustments.',
+    techs: ['Java', 'Android', 'ExoPlayer', 'Room DB'],
+    github: 'https://github.com/PRABHUSIDDARTH/SwaraApp',
+    category: 'Android Mobile',
+    stars: 4,
+    featured: true,
+    badge: 'ANDROID',
+    color: '#5EC8D8',
   },
   {
-    id: "algomentor",
-    title: "AlgoMentor AI DSA Coach",
-    description: "AI-Powered DSA Assistant leveraging Gemini API for personalized problem-solving guidance.",
-    badge: "AI_AGENT",
-    category: "Generative AI",
-    techs: ["Python", "FastAPI", "Gemini API"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "brain",
+    id: 'distraction-monitor',
+    title: 'Distraction Monitor',
+    description: 'Real-time AI attention tracker using EAR/MAR ratios and screen capture.',
+    longDesc: 'Computer vision agent that measures Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) in real time using MediaPipe face mesh to calculate attention indexes and emit custom focus warnings. Also detects distraction via screen capture + TensorFlow inference.',
+    techs: ['Python', 'OpenCV', 'MediaPipe', 'TensorFlow'],
+    github: 'https://github.com/PRABHUSIDDARTH/distraction-monitor-v1',
+    category: 'Computer Vision · AI',
+    stars: 4,
     featured: false,
-    content: "A specialized tech mentor that evaluates algorithms socratically, assisting candidates in solving DSA exercises and optimizing spatial-temporal complexities."
+    badge: 'VISION AI',
+    color: '#848A99',
   },
   {
-    id: "distraction",
-    title: "Distraction Monitor",
-    description: "AI Attention Tracker using computer vision to detect focus levels and trigger alerts.",
-    badge: "VISION_AI",
-    category: "Computer Vision",
-    techs: ["Python", "OpenCV", "MediaPipe"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "eye",
+    id: 'algomentor',
+    title: 'AlgoMentor',
+    description: 'AI DSA coach using Gemini API — Socratic, never spoils the solution.',
+    longDesc: 'Specialized AI mentor that evaluates algorithms socratically: analyzes user code, suggests optimization vectors, and asks guided questions without giving direct answers. Powered by Gemini API with custom system prompting.',
+    techs: ['HTML', 'JavaScript', 'Gemini API'],
+    github: 'https://github.com/PRABHUSIDDARTH/AlgoMentor',
+    category: 'Generative AI',
+    stars: 4,
     featured: false,
-    content: "Real-time computer vision agent that measures eye aspect ratio (EAR) and mouth gap ratios to calculate attention indexes and emit custom focus warnings."
+    badge: 'AI AGENT',
+    color: '#848A99',
   },
   {
-    id: "phishing",
-    title: "Phishing Detector",
-    description: "Security tool for URL pattern analysis and malicious link detection using heuristic filters.",
-    badge: "SECURITY",
-    category: "Information Security",
-    techs: ["TypeScript", "Heuristics", "React"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "alert-triangle",
+    id: 'elected',
+    title: 'ElectED',
+    description: 'Civic awareness portal for election literacy and interactive voting education.',
+    longDesc: 'Fully responsive educational portal with voting tutorials, election map simulations, and interactive civic literacy quizzes. Built to increase voter registration awareness among youth demographics.',
+    techs: ['HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/PRABHUSIDDARTH/ElectED',
+    category: 'Web Application',
+    stars: 4,
     featured: false,
-    content: "Security validator designed to dissect URI networks. Scans domain namespaces looking for homograph targets, excessive sub-level framings, and keyword baiting indicators."
+    badge: 'WEB APP',
+    color: '#848A99',
   },
   {
-    id: "elected",
-    title: "ElectED awareness portal",
-    description: "Modern educational portal for election awareness and voting literacy.",
-    badge: "WEB_APP",
-    category: "Web Application",
-    techs: ["HTML", "Tailwind CSS", "JavaScript"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "vote",
+    id: 'helmet-detection',
+    title: 'Helmet & Mask Detection',
+    description: 'Real-time object detection system identifying helmets and face masks via CV.',
+    longDesc: 'Safety compliance object detection system using computer vision to identify whether individuals are wearing helmets and face masks in real-time video streams.',
+    techs: ['Python', 'TensorFlow', 'OpenCV'],
+    github: 'https://github.com/PRABHUSIDDARTH/helmet-face-mask-detection',
+    category: 'Computer Vision',
+    stars: 4,
     featured: false,
-    content: "Fully responsive system packed with voting tutorials, election map simulations, and interactive civic literacy quizzes to increase voting demographics."
+    badge: 'VISION AI',
+    color: '#848A99',
   },
   {
-    id: "blog",
-    title: "Markdown Blog Website",
-    description: "Dynamic content management system with user authentication and markdown support.",
-    badge: "FULLSTACK",
-    category: "Web Application",
-    techs: ["Node.js", "Express", "MongoDB"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "edit",
+    id: 'mern-projects',
+    title: 'MERN Stack Projects',
+    description: 'Collection of full-stack JavaScript applications built with the MERN stack.',
+    longDesc: 'A curated collection of full-stack web applications built with MongoDB, Express.js, React, and Node.js — covering authentication, CRUD operations, and RESTful API design.',
+    techs: ['MongoDB', 'Express', 'React', 'Node.js'],
+    github: 'https://github.com/PRABHUSIDDARTH/MERN_projects',
+    category: 'Full Stack Web',
+    stars: 1,
     featured: false,
-    content: "Self-hosted blogging canvas which compiles markdown source templates on the fly, with high-security route controllers and reader-analytics boards."
+    badge: 'FULLSTACK',
+    color: '#848A99',
   },
   {
-    id: "bank",
-    title: "Bank Management System",
-    description: "Console-based banking simulation managing accounts, transactions, and user records.",
-    badge: "CORE_JAVA",
-    category: "Console Utility",
-    techs: ["Java", "OOP", "JDBC"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "dollar-sign",
+    id: 'inventory',
+    title: 'Inventory Management',
+    description: 'Java inventory system with stock tracking, orders, and supplier management.',
+    longDesc: 'High-performance enterprise tracker using structured relational triggers to log shipping entries, automatically calculate restock lists, and alert on low stock levels. Full OOP implementation in Java.',
+    techs: ['Java', 'OOP', 'JDBC', 'SQL'],
+    github: 'https://github.com/PRABHUSIDDARTH/InventoryManagement',
+    category: 'Enterprise System',
+    stars: 4,
     featured: false,
-    content: "Robust console implementation for tracking credit ledgers, processing cross-account wire flows, handling safe password salts, and writing transaction audit sheets."
+    badge: 'ENTERPRISE',
+    color: '#848A99',
   },
   {
-    id: "inventory",
-    title: "Inventory Management System",
-    description: "Scalable solution for stock tracking, order processing, and supplier management.",
-    badge: "ENTERPRISE",
-    category: "Enterprise System",
-    techs: ["Python", "SQLite", "Tkinter"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "package",
+    id: 'bank',
+    title: 'Bank Management System',
+    description: 'CLI banking simulation — accounts, transactions, OOP-first, JDBC-backed.',
+    longDesc: 'Robust console implementation for tracking credit ledgers, processing cross-account wire flows, handling password salting, and writing transaction audit sheets. Full OOP design.',
+    techs: ['Java', 'OOP', 'JDBC'],
+    github: 'https://github.com/PRABHUSIDDARTH/bank_management_system',
+    category: 'Console Utility',
+    stars: 4,
     featured: false,
-    content: "High-performance enterprise tracker utilizing structured relational triggers to log shipping entries, automatically calculate restock lists, and alert on low stock levels."
+    badge: 'JAVA',
+    color: '#848A99',
   },
   {
-    id: "task",
-    title: "Minimalist Task Manager",
-    description: "Minimalist productivity tool with local persistence and category filtering.",
-    badge: "UTILITY",
-    category: "Web Application",
-    techs: ["React", "LocalStorage", "Motion"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "check-square",
+    id: 'java-micro',
+    title: 'Java Micro Projects',
+    description: 'Collection of 20+ logic-heavy mini apps: maze solvers, socket bridges, compressors.',
+    longDesc: 'Curated collection of recursive maze resolvers, multithreaded ticket booking engines, socket message bridges, file compression plugins, and general algorithm validations in Java.',
+    techs: ['Java', 'Multithreading', 'Algorithms'],
+    github: 'https://github.com/PRABHUSIDDARTH/Java_Micro_Projects',
+    category: 'Data Structures',
+    stars: 4,
     featured: false,
-    content: "Productive dashboard using smooth, responsive drag-and-drop mechanics, interactive deadline charts, categorizations, and persistent client-side schemas."
+    badge: 'COLLECTION',
+    color: '#848A99',
   },
   {
-    id: "javamicro",
-    title: "Java Micro Projects Repository",
-    description: "A curated repository of 20+ logic-heavy mini applications and algorithms.",
-    badge: "COLLECTION",
-    category: "Data Structures",
-    techs: ["Java", "Multithreading", "Algorithms"],
-    github: "https://github.com/PRABHUSIDDARTH",
-    iconName: "folder",
+    id: 'blog',
+    title: 'Blog Website',
+    description: 'IBM Edunet internship project — dynamic content management with markdown.',
+    longDesc: 'Self-hosted blogging platform built as part of the IBM × Edunet Frontend Developer Internship. Compiles markdown templates on the fly with reader analytics and authentication.',
+    techs: ['HTML', 'CSS', 'JavaScript'],
+    github: 'https://github.com/PRABHUSIDDARTH/Blog-website',
+    category: 'Web Application',
+    stars: 3,
     featured: false,
-    content: "Collection of recursive maze resolvers, multithreaded ticket bookings, socket message bridges, file compression plugins, and general algorithm validations."
-  }
+    badge: 'WEB APP',
+    color: '#848A99',
+  },
 ];
 
-export const LEETCODE_PROBLEMS: LeetCodeProblem[] = [
-  {
-    id: "twosum",
-    title: "Two Sum",
-    difficulty: "Easy",
-    category: "Arrays & Hashing",
-    description: "Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.",
-    initialCode: `function twoSum(nums: number[], target: number): number[] {
-  // Use a Hash Map for O(N) lookup
-  const map = new Map<number, number>();
-  
-  for (let i = 0; i < nums.length; i++) {
-    const complement = target - nums[i];
-    if (map.has(complement)) {
-      return [map.get(complement)!, i];
-    }
-    map.set(nums[i], i);
-  }
-  
-  return [];
-}`,
-    testCases: [
-      { input: "[2, 7, 11, 15], target = 9", expected: "[0, 1]" },
-      { input: "[3, 2, 4], target = 6", expected: "[1, 2]" }
-    ]
-  },
-  {
-    id: "revlist",
-    title: "Reverse Linked List",
-    difficulty: "Easy",
-    category: "Linked Lists",
-    description: "Given the head of a singly linked list, reverse the list, and return its reversed representation.\nMust handle iterative or recursive patterns in O(N) time complexity.",
-    initialCode: `class ListNode {
-  val: number;
-  next: ListNode | null;
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = (val===undefined ? 0 : val)
-    this.next = (next===undefined ? null : next)
-  }
-}
+// Featured projects for 3D panels (top 5)
+export const FEATURED_PROJECTS = PROJECTS.filter(p => p.featured);
 
-function reverseList(head: ListNode | null): ListNode | null {
-  let prev = null;
-  let curr = head;
-  
-  while (curr !== null) {
-    const nextTemp = curr.next;
-    curr.next = prev;
-    prev = curr;
-    curr = nextTemp;
-  }
-  
-  return prev;
-}`,
-    testCases: [
-      { input: "[1, 2, 3, 4, 5]", expected: "[5, 4, 3, 2, 1]" }
-    ]
-  },
-  {
-    id: "water",
-    title: "Container With Most Water",
-    difficulty: "Medium",
-    category: "Two Pointers",
-    description: "Given `n` non-negative integers representing an elevation map where the width of each bar is 1, find two lines that together with the x-axis forms a container, such that the container contains the most water.",
-    initialCode: `function maxArea(height: number[]): number {
-  let maxVal = 0;
-  let left = 0;
-  let right = height.length - 1;
-  
-  while (left < right) {
-    const width = right - left;
-    const currentHeight = Math.min(height[left], height[right]);
-    maxVal = Math.max(maxVal, width * currentHeight);
-    
-    if (height[left] < height[right]) {
-      left++;
-    } else {
-      right--;
-    }
-  }
-  
-  return maxVal;
-}`,
-    testCases: [
-      { input: "[1,8,6,2,5,4,8,3,7]", expected: "49" }
-    ]
-  },
-  {
-    id: "merge",
-    title: "Merge k Sorted Lists",
-    difficulty: "Hard",
-    category: "Divide & Conquer",
-    description: "You are given an array of `k` linked-lists `lists`, each linked-list is sorted in ascending order.\nMerge all the linked-lists into one sorted linked-list and return it.",
-    initialCode: `function mergeKLists(lists: (ListNode | null)[]): ListNode | null {
-  // Try implementing a Min-Heap or Divide & Conquer!
-  // Socratic Coach tip: A divide & conquer approach splits the array
-  // of lists and merges them pairwise, reducing runtime to O(N log k).
-  
-  return null; 
-}`,
-    testCases: [
-      { input: "[[1,4,5], [1,3,4], [2,6]]", expected: "[1,1,2,3,4,4,5,6]" }
-    ]
-  }
+export const TECH_NODES: TechNode[] = [
+  { id: 'java',       label: 'Java',        category: 'language',  x: -2.5,  y:  0.8,  z: 0 },
+  { id: 'python',     label: 'Python',      category: 'language',  x: -1.5,  y: -1.0,  z: 0.5 },
+  { id: 'typescript', label: 'TypeScript',  category: 'language',  x:  0.2,  y:  1.5,  z: -0.3 },
+  { id: 'react',      label: 'React',       category: 'framework', x:  1.8,  y:  0.4,  z: 0.6 },
+  { id: 'spring',     label: 'Spring Boot', category: 'framework', x: -2.0,  y: -0.2,  z: -0.5 },
+  { id: 'fastapi',    label: 'FastAPI',     category: 'framework', x:  0.8,  y: -1.5,  z: 0.4 },
+  { id: 'redis',      label: 'Redis',       category: 'infra',     x:  2.5,  y: -0.5,  z: -0.4 },
+  { id: 'postgres',   label: 'PostgreSQL',  category: 'infra',     x: -0.5,  y:  1.0,  z: -1.0 },
+  { id: 'docker',     label: 'Docker',      category: 'tool',      x:  1.2,  y: -0.8,  z: -0.8 },
+  { id: 'kubernetes', label: 'Kubernetes',  category: 'infra',     x:  2.0,  y:  1.2,  z: 0.2 },
+  { id: 'android',    label: 'Android',     category: 'framework', x: -1.0,  y:  1.8,  z: 0.7 },
+  { id: 'tensorflow', label: 'TensorFlow',  category: 'ai',        x:  0.0,  y: -0.5,  z: 1.2 },
+  { id: 'opencv',     label: 'OpenCV',      category: 'ai',        x: -1.8,  y: -1.5,  z: 0.3 },
+  { id: 'gemini',     label: 'Gemini API',  category: 'ai',        x:  2.2,  y:  0.0,  z: 1.0 },
+  { id: 'git',        label: 'Git',         category: 'tool',      x:  0.5,  y:  0.5,  z: -1.5 },
+  { id: 'linux',      label: 'Linux',       category: 'tool',      x: -0.3,  y: -1.8,  z: -0.6 },
+];
+
+export const TIMELINE = [
+  { year: '2026', title: 'Sidd-AI SDK Release', sub: 'Open Source · 500+ Downloads', detail: 'Published a lightweight, framework-agnostic Java SDK for calling any major AI model — OpenAI, Gemini, Claude, Nim, Kimi, Ollama — through one unified API. Think LiteLLM but for Java.' },
+  { year: '2025', title: 'Microsoft Azure AI Internship', sub: 'AICTE Virtual Program · Certified', detail: 'Trained custom vision trackers and deployed pipeline solutions with Azure orchestration. Specialized in ML fundamentals and cloud-native AI.' },
+  { year: '2025', title: 'IBM × EDUNET Internship', sub: 'Frontend Developer · Certified', detail: 'Built the Blog Website project as the internship capstone — interactive dashboards and SPA architecture with responsive state management.' },
+  { year: '2024–Present', title: 'B.Tech IT · Sri Shakthi', sub: 'CGPA 8.26 · Third Year', detail: 'Studying Data Structures & Algorithms, OS, DBMS, and OOP at Sri Shakthi Institute, Coimbatore. 300+ LeetCode problems solved alongside coursework.' },
 ];
