@@ -67,7 +67,7 @@ Deployed on Vercel. `vercel.json` rewrites every non-asset path to the SPA.
 
 ## About Me
 
-Hi! I'm **Prabhu Siddarth A V**, a Software Development Engineer and third-year Information Technology student at **Sri Shakthi Institute of Engineering & Technology** (CGPA: **8.26**).
+Hi! I'm **Prabhu Siddarth A V**, a Software Development Engineer and third-year Information Technology student at **Sri Shakthi Institute of Engineering & Technology** (CGPA: **8.3**).
 
 - **Systems & Backend Builder** — Building multi-cloud orchestrators, distributed rate limiters, and framework-agnostic Java SDKs.
 - **Android Developer** — Crafting native Android applications implementing Clean Architecture, MVVM, and offline-first persistence.

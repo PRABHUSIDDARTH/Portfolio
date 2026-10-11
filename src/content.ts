@@ -169,7 +169,7 @@ export const STATS: Metric[] = [
   { value: '15', label: 'projects on this page' },
   { value: '1', label: 'open-source SDK on Maven Central' },
   { value: '4', label: 'engineers on the team I lead' },
-  { value: '8.26', label: 'CGPA' },
+  { value: '8.3', label: 'CGPA' },
 ];
 
 export const CAPABILITIES: { title: string; items: string[] }[] = [
@@ -184,5 +184,5 @@ export const PATH: { year: string; title: string; detail: string }[] = [
   { year: '2026', title: 'Open-sourced sidd-ai', detail: 'Published to Maven Central under Apache 2.0 and launched on Product Hunt. 600+ downloads and 35+ organisations so far.' },
   { year: '2025', title: 'Microsoft Azure AI internship', detail: 'AICTE virtual programme. Trained vision models and ran them through Azure ML.' },
   { year: '2025', title: 'IBM x Edunet internship', detail: 'Frontend track. The capstone blog went live on Vercel.' },
-  { year: '2024', title: 'B.Tech IT, Sri Shakthi', detail: 'CGPA 8.26. Started PS-TECH-Solution and joined F-A-L-C-O-N.' },
+  { year: '2024', title: 'B.Tech IT, Sri Shakthi', detail: 'CGPA 8.3. Started PS-TECH-Solution and joined F-A-L-C-O-N.' },
 ];

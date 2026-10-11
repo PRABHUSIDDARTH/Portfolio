@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prabhu Siddarth A V - Resume</title>
+<style>
+@font-face{font-family:PSerif;src:url(fonts/InstrumentSerif-400-normal.woff2)}
+@font-face{font-family:PSerif;font-style:italic;src:url(fonts/InstrumentSerif-400-italic.woff2)}
+@font-face{font-family:PGeist;font-weight:400;src:url(fonts/Geist-400-normal.woff2)}
+@font-face{font-family:PGeist;font-weight:500;src:url(fonts/Geist-500-normal.woff2)}
+@font-face{font-family:PMono;src:url(fonts/GeistMono-400-normal.woff2)}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#16140f;--soft:#4a463e;--mute:#7b766b;--rule:#d9d3c6;--accent:#d9542b}
+html,body{background:#fff}
+body{font-family:PGeist,sans-serif;font-size:8.7pt;line-height:1.36;color:var(--ink);width:210mm;height:297mm;padding:11mm 14mm 9mm;overflow:hidden}
+a{color:inherit;text-decoration:none}
+header{display:grid;grid-template-columns:1fr auto;align-items:end;gap:6mm;padding-bottom:4mm;border-bottom:1.2pt solid var(--ink)}
+h1{font-family:PSerif;font-weight:400;font-size:38pt;line-height:.9;letter-spacing:-.01em}
+h1 i{font-style:italic}
+.role{font-family:PMono;font-size:7.4pt;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-top:2.6mm}
+.contact{font-family:PMono;font-size:7.6pt;line-height:1.65;text-align:right;color:var(--soft)}
+.contact b{font-weight:400;color:var(--ink)}
+.summary{font-size:9pt;line-height:1.45;color:var(--soft);margin:3.6mm 0 1mm;max-width:172mm}
+.summary strong{font-weight:500;color:var(--ink)}
+section{margin-top:3.2mm}
+h2{display:flex;align-items:center;gap:3mm;font-family:PMono;font-weight:400;font-size:7.2pt;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:2.2mm}
+h2::after{content:"";flex:1;height:.6pt;background:var(--rule)}
+h2::before{content:"";width:4pt;height:4pt;border-radius:50%;background:var(--accent)}
+.item{display:grid;grid-template-columns:1fr auto;column-gap:4mm;margin-bottom:2.2mm;break-inside:avoid}
+.item h3{font-family:PSerif;font-weight:400;font-size:14pt;line-height:1.05}
+.item h3 em{font-family:PGeist;font-style:normal;font-size:8.4pt;color:var(--soft);margin-left:1.6mm}
+.meta{font-family:PMono;font-size:7.3pt;color:var(--mute);text-align:right;white-space:nowrap;padding-top:1.2mm}
+.item ul{grid-column:1/-1;list-style:none;margin-top:1mm}
+.item li{position:relative;padding-left:3.6mm;margin-bottom:.6mm;color:#26231d}
+.item li::before{content:"";position:absolute;left:0;top:.62em;width:1.6mm;height:.7pt;background:var(--accent)}
+.stack{grid-column:1/-1;font-family:PMono;font-size:7pt;color:var(--mute);margin-top:.6mm}
+.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:7mm}
+.mini{margin-bottom:1.6mm;break-inside:avoid}
+.mini .top{display:flex;justify-content:space-between;gap:3mm}
+.mini b{font-weight:500}
+.mini .top span{font-family:PMono;font-size:7pt;color:var(--mute)}
+.mini p{color:var(--soft);font-size:8.3pt;line-height:1.38}
+.skills{display:grid;grid-template-columns:30mm 1fr;row-gap:1.3mm;column-gap:3mm}
+.skills dt{font-family:PMono;font-size:7.3pt;color:var(--mute);padding-top:.3mm;text-transform:uppercase;letter-spacing:.06em}
+.skills dd{color:#26231d}
+.edu{display:grid;grid-template-columns:1fr auto}
+.edu b{font-weight:500}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Prabhu <i>Siddarth</i> A V</h1>
+    <div class="role">Software Development Engineer &middot; Backend &amp; Applied AI</div>
+  </div>
+  <div class="contact">
+    <a href="mailto:prabhusiddarth37@gmail.com"><b>prabhusiddarth37@gmail.com</b></a><br>
+    <a href="https://prabhusiddarth.vercel.app">prabhusiddarth.vercel.app</a><br>
+    <a href="https://github.com/PRABHUSIDDARTH">github.com/PRABHUSIDDARTH</a><br>
+    <a href="https://www.linkedin.com/in/prabhu-siddarth-av/">linkedin.com/in/prabhu-siddarth-av</a><br>
+    Coimbatore, India
+  </div>
+</header>
+
+<p class="summary">B.Tech IT student who builds the backend first and the product around it. I lead a four-person team on <strong>NexusCloud</strong>, a multi-cloud storage router, and maintain <strong>sidd-ai</strong>, an open-source Java SDK for LLMs on Maven Central with 600+ downloads across 35+ organisations. Most comfortable in Java, Python and FastAPI; happy shipping Android too.</p>
+
+<section>
+  <h2>Flagship work</h2>
+
+  <div class="item">
+    <h3>NexusCloud <em>Project Lead, NexusCloud-Orchestra (team of 4)</em></h3>
+    <div class="meta">2026 &middot; github.com/NexusCloud-Orchestra</div>
+    <ul>
+      <li>Pools the free tiers of seven providers (AWS, GCP, Azure, Cloudflare R2, Backblaze, Oracle, IBM) into one disk of 70 GB+ per user.</li>
+      <li>Designed the Smart Router, which scores every connected bucket on free quota, egress cost, tier permanence and file fit before each upload.</li>
+      <li>Files travel straight to the chosen bucket over presigned URLs, so the API never proxies a byte; I also own the backend core and the Docker / Cloud Run deployment.</li>
+    </ul>
+    <div class="stack">FastAPI &middot; Python 3.12 &middot; PostgreSQL 16 &middot; Redis 7 &middot; React 18 &middot; Docker &middot; GCP Cloud Run</div>
+  </div>
+
+  <div class="item">
+    <h3>sidd-ai <em>Creator and maintainer, open source (Apache 2.0)</em></h3>
+    <div class="meta">2026 &middot; Maven Central</div>
+    <ul>
+      <li>One Java method talks to eight providers; the model string decides the route, so <span style="font-family:PMono;font-size:7.8pt">claude-sonnet-5.5</span>, <span style="font-family:PMono;font-size:7.8pt">gpt-6.1-sol</span> and a local <span style="font-family:PMono;font-size:7.8pt">llama3.2</span> share the same call.</li>
+      <li>600+ downloads on Maven Central and 35+ organisations using it; launched on Product Hunt. Runs from a plain <span style="font-family:PMono;font-size:7.8pt">main()</span> with no Spring and no YAML.</li>
+    </ul>
+    <div class="stack">Java 17 &middot; ModelRouter &middot; JUnit 5 &middot; Maven Central publishing</div>
+  </div>
+
+  <div class="item">
+    <h3>Swara <em>Solo: product design and engineering</em></h3>
+    <div class="meta">2026 &middot; Android + iOS</div>
+    <ul>
+      <li>Offline music player written in plain Java on Media3 and Room, with a queue, sleep timer, home-screen widget and a SwiftUI port for iOS.</li>
+      <li>Eight colour themes, each clearing 7:1 text contrast, and zero network calls; the library lives in Room with versioned schema migrations.</li>
+    </ul>
+    <div class="stack">Java 17 &middot; Media3 / ExoPlayer &middot; Room &middot; MVVM &middot; Glide &middot; SwiftUI &middot; GitHub Actions</div>
+  </div>
+</section>
+
+<section>
+  <h2>Other projects</h2>
+  <div class="cols">
+    <div class="mini"><div class="top"><b>Return Risk Scorer</b><span>Python &middot; ML &middot; Gemini</span></div>
+      <p>Flags likely return abuse before an order ships; Gemini explains each score and every decision goes to an append-only log.</p></div>
+    <div class="mini"><div class="top"><b>PyRAG</b><span>LangChain &middot; ChromaDB &middot; FAISS</span></div>
+      <p>RAG pipeline that refuses to answer below a retrieval-score threshold and cites the chunk it used when it does.</p></div>
+    <div class="mini"><div class="top"><b>RetinaFace Inference</b><span>FastAPI &middot; SQLAlchemy</span></div>
+      <p>Face detection service for F-A-L-C-O-N: boxes, five landmarks, annotated output and per-request metrics stored in SQL.</p></div>
+    <div class="mini"><div class="top"><b>SiddBot</b><span>Java 17 &middot; LLMs</span></div>
+      <p>Chatbot toolkit with conversation memory, persistence and prompt-injection checks behind a builder API.</p></div>
+    <div class="mini"><div class="top"><b>Phishing Detector</b><span>FastAPI &middot; Chrome MV3</span></div>
+      <p>Chrome extension that scores each page against a FastAPI service and warns before you type a password.</p></div>
+    <div class="mini"><div class="top"><b>LifeLink</b><span>JavaScript &middot; Gemini API</span></div>
+      <p>Emergency-help web app for PS-TECH-Solution that walks a bystander through first aid while help is on the way.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Experience</h2>
+  <div class="item">
+    <h3>Microsoft Azure AI Intern <em>AICTE virtual programme</em></h3>
+    <div class="meta">2025</div>
+    <ul><li>Trained computer-vision models and ran training and deployment through Azure ML.</li></ul>
+  </div>
+  <div class="item">
+    <h3>Frontend Intern <em>IBM SkillsBuild x Edunet Foundation</em></h3>
+    <div class="meta">2025</div>
+    <ul><li>Built a blog as the capstone and deployed it to Vercel.</li></ul>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <dl class="skills">
+    <dt>Languages</dt><dd>Java, Python, JavaScript / TypeScript, SQL, Swift</dd>
+    <dt>Backend</dt><dd>Spring Boot, FastAPI, Flask, PostgreSQL, Redis, JPA / JDBC, REST / OpenAPI</dd>
+    <dt>Cloud / DevOps</dt><dd>Docker, Kubernetes, GCP Cloud Run, S3 / GCS / Azure Blob, GitHub Actions, Linux</dd>
+    <dt>Mobile</dt><dd>Native Android (Java), Media3 / ExoPlayer, Room, MVVM, SwiftUI</dd>
+    <dt>Applied AI</dt><dd>LLM SDKs, RAG, LangChain, TensorFlow, OpenCV / MediaPipe, OpenAI / Gemini / Ollama</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="edu">
+    <div><b>Sri Shakthi Institute of Engineering &amp; Technology</b>, Coimbatore<br><span style="color:var(--soft)">B.Tech Information Technology &middot; CGPA 8.3</span></div>
+    <div class="meta">2024 &ndash; 2028</div>
+  </div>
+</section>
+</body>
+</html>
