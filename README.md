@@ -1,11 +1,67 @@
-# Prabhu Siddarth A V — Software Development Engineer Portfolio
+# Prabhu Siddarth A V | Portfolio
 
-[![Portfolio Live](https://img.shields.io/badge/Portfolio-Live_Site-4FD1C5?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-prabhusiddarth.vercel.app/)
-[![GitHub](https://img.shields.io/badge/GitHub-PRABHUSIDDARTH-E8A33D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/PRABHUSIDDARTH)
+[![GitHub](https://img.shields.io/badge/GitHub-PRABHUSIDDARTH-111?style=for-the-badge&logo=github)](https://github.com/PRABHUSIDDARTH)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Prabhu_Siddarth-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/prabhu-siddarth-av/)
-[![LeetCode](https://img.shields.io/badge/LeetCode-350%2B_Problems-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/u/psTech/)
 
-> **A scroll-driven, interactive 3D developer portfolio showcasing distributed backend systems, native Android applications, AI tools, and open-source SDKs.**
+An editorial, motion-led portfolio with a dedicated product page for each flagship.
+
+## Routes
+
+| Route | What it is |
+| --- | --- |
+| `/` | Hero shader, statement, pinned horizontal flagship reel, filterable index of all work, capabilities, path, contact |
+| `/nexuscloud` | NexusCloud: multi-cloud BYOC orchestration, with a live Smart Router simulator |
+| `/swara` | Swara: offline Java music player, with an interactive phone and the 8 WCAG AAA themes |
+| `/sidd-ai` | sidd-ai: Java AI SDK, with a playground that runs a TypeScript port of the real `ModelRouter` |
+
+## Design system
+
+- Type: Instrument Serif (display), Geist (text), Geist Mono (metadata)
+- Motion: Lenis smooth scroll driven by the GSAP ticker, ScrollTrigger reveals, a pinned horizontal reel, and a clip-path curtain between routes
+- WebGL: one fullscreen contour shader (three.js). Scroll velocity bends it, the cursor lenses it, and it pauses when off-screen or when the tab is hidden
+- Accessibility: skip link, keyboard-operable demos, `prefers-reduced-motion` respected throughout
+
+## Structure
+
+```
+src/content.ts            all copy, flagships, works, capabilities
+src/lib/router.tsx        history router + curtain transitions
+src/lib/smooth.ts         Lenis + GSAP wiring, scroll velocity
+src/lib/motion.tsx        reveal / split-text hooks, page meta
+src/components/           Field (shader), Chrome (nav, cursor, preloader, footer), ProductShell
+src/pages/                Home, NexusCloud, Swara, SiddAi
+```
+
+Edit `src/content.ts` to add or change work. Flagships with a `route` link to their page.
+
+## Contact form (SMTP)
+
+`POST /api/contact` sends mail through Nodemailer. It's in `api/contact.ts`, which runs as a Vercel function and is also mounted on the Express dev server. Set these env vars (Vercel project settings, or `.env` locally):
+
+| Var | Example |
+| --- | --- |
+| `SMTP_HOST` | `smtp.gmail.com` |
+| `SMTP_PORT` | `465` |
+| `SMTP_USER` | your Gmail address |
+| `SMTP_PASS` | a Gmail App Password (not your login password) |
+| `CONTACT_TO` | inbox to deliver to (defaults to `SMTP_USER`) |
+
+It validates input, strips newlines from headers, sets Reply-To to the sender, rate-limits each IP to 3 messages per 10 minutes, and drops bot submissions with a honeypot field.
+
+## Resume
+
+Put your PDF at `public/resume.pdf`. Every Resume button links to `/resume.pdf`.
+
+## Run
+
+```bash
+npm install
+npm run dev      # Express + Vite on http://localhost:3000
+npm run build    # static bundle in dist/ + dist/server.cjs
+npm run lint     # tsc --noEmit
+```
+
+Deployed on Vercel. `vercel.json` rewrites every non-asset path to the SPA.
 
 ---
 
@@ -13,39 +69,9 @@
 
 Hi! I'm **Prabhu Siddarth A V**, a Software Development Engineer and third-year Information Technology student at **Sri Shakthi Institute of Engineering & Technology** (CGPA: **8.26**).
 
-- 🧩 **350+ LeetCode Problems Solved** — Strong focus on Data Structures, Algorithms, and System Design.
 - 🛠️ **Systems & Backend Builder** — Building multi-cloud orchestrators, distributed rate limiters, and framework-agnostic Java SDKs.
 - 📱 **Android Developer** — Crafting native Android applications implementing Clean Architecture, MVVM, and offline-first persistence.
 - 🤖 **AI Systems Developer** — Building computer vision focus trackers and LLM integrations.
-
----
-
-## ✨ Features & Architecture
-
-### 🌌 1. Interactive 3D Experience (Three.js / React Three Fiber)
-- **Dynamic 3D Constellation**: Interactive 3D node network mapping technical skills in real time.
-- **Scroll-Driven Camera Movements**: Seamless camera interpolation synchronized with section navigation.
-- **Particle & Lighting Shaders**: Ambient particle field with mouse-tracked physics and atmospheric lighting.
-- **Audio & Performance Controls**: Toggle ambient soundscapes and switch between Full 3D and Lite mode for lower GPU usage.
-
-### ⚡ 2. Standalone 3D Product Page: [`/sidd-ai`](https://portfolio-prabhusiddarth.vercel.app/sidd-ai)
-A dedicated, fully 3D interactive landing page for **[sidd-ai](https://github.com/PRABHUSIDDARTH/sidd-ai)** — a framework-agnostic Java SDK:
-- **3D WebGL Background**: 1,800+ particle space background with mouse perspective parallax.
-- **Interactive SVG Model Router**: Click provider prefixes to visualize real-time routing to **OpenAI, Google Gemini, Anthropic Claude, xAI Grok, NVIDIA NIM, Moonshot Kimi**, or local **Ollama**.
-- **Tabbed Quickstart & Code Blocks**: Zero-config static calls, client builder pattern, provider swapping, and unified exception handling (`AiAuthException`, `AiRateLimitException`).
-
----
-
-## 🛠️ Tech Stack
-
-| Category | Technologies |
-|---|---|
-| **Languages** | Java (11+), Python, C, JavaScript (ES6+), TypeScript, SQL |
-| **Backend & Systems** | FastAPI, Spring Boot, REST APIs, System Architecture |
-| **Frontend & 3D** | React 18, Vite, Three.js, React Three Fiber, Framer Motion, Tailwind CSS, HTML5/CSS3 |
-| **Android Development** | Java Native Android, MVVM, Clean Architecture, ExoPlayer, Room DB, Jetpack Components |
-| **Cloud & DevOps** | Docker, Kubernetes, AWS S3, Google Cloud Storage, Azure Blob, Git, Linux |
-| **AI / Machine Learning** | OpenCV, MediaPipe, TensorFlow, Gemini API, OpenAI API, Ollama |
 
 ---
 
@@ -62,40 +88,11 @@ A dedicated, fully 3D interactive landing page for **[sidd-ai](https://github.co
 
 ---
 
-## 🚀 Quick Start (Local Setup)
-
-To run this portfolio locally on your machine:
-
-### Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
-
-### Steps
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/PRABHUSIDDARTH/Portfolio.git
-
-# 2. Navigate into the directory
-cd Portfolio
-
-# 3. Install dependencies
-npm install
-
-# 4. Start the local development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to explore the portfolio, or visit [http://localhost:3000/sidd-ai](http://localhost:3000/sidd-ai) to see the standalone Sidd-AI product page.
-
----
-
 ## 📬 Contact & Connect
 
 - **Email**: [prabhusiddarth37@gmail.com](mailto:prabhusiddarth37@gmail.com)
 - **LinkedIn**: [linkedin.com/in/prabhu-siddarth-av](https://www.linkedin.com/in/prabhu-siddarth-av/)
 - **GitHub**: [github.com/PRABHUSIDDARTH](https://github.com/PRABHUSIDDARTH)
-- **LeetCode**: [leetcode.com/u/psTech](https://leetcode.com/u/psTech/)
 - **Location**: Coimbatore, Tamil Nadu, India
 
 ---

@@ -12,17 +12,15 @@ export default defineConfig(() => {
       },
     },
     optimizeDeps: {
-      include: [
-        '@react-three/fiber',
-        '@react-three/drei',
-        '@react-three/postprocessing',
-        'three',
-        'lenis',
-        'framer-motion',
-        'zustand',
-        'gsap',
-      ],
-      exclude: ['postprocessing'],
+      include: ['three', 'lenis', 'gsap', '@gsap/react'],
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          // Long-lived vendor chunks: three.js and the motion stack change far less than content.
+          manualChunks: { three: ['three'], motion: ['gsap', '@gsap/react', 'lenis'] },
+        },
+      },
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

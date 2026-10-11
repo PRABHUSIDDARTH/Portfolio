@@ -3,13 +3,17 @@ import path from "path";
 import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
+import contactHandler from "./api/contact";
 
 dotenv.config();
 
 const app = express();
 const PORT = 3000;
 
-app.use(express.json());
+app.use(express.json({ limit: "32kb" }));
+
+// SMTP-backed contact form (same handler Vercel runs from api/contact.ts)
+app.post("/api/contact", (req, res) => contactHandler(req, res));
 
 // Initialize Gemini SDK with telemetry header
 const geminiApiKey = process.env.GEMINI_API_KEY;
@@ -151,12 +155,6 @@ app.post("/api/phishing/scan", (req, res) => {
       signals: ["Malformed URL structure", "Failed to resolve standard host framing"],
     });
   }
-});
-
-// Dedicated /sidd-ai route — serves the standalone product landing page
-app.get("/sidd-ai", (req, res) => {
-  const htmlPath = path.join(process.cwd(), "public", "sidd-ai.html");
-  res.sendFile(htmlPath);
 });
 
 // Serve static public assets (logo, etc.) from /assets
