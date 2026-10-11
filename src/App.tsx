@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Cursor, Footer, Nav, Preloader } from './components/Chrome';
 import Home from './pages/Home';
 import NexusCloud from './pages/NexusCloud';
@@ -43,6 +44,7 @@ export default function App() {
       <Nav />
       <Cursor />
       <Routes />
+      <Analytics />
     </RouterProvider>
   );
 }
