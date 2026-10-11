@@ -65,30 +65,30 @@ Deployed on Vercel. `vercel.json` rewrites every non-asset path to the SPA.
 
 ---
 
-## 👨‍💻 About Me
+## About Me
 
 Hi! I'm **Prabhu Siddarth A V**, a Software Development Engineer and third-year Information Technology student at **Sri Shakthi Institute of Engineering & Technology** (CGPA: **8.26**).
 
-- 🛠️ **Systems & Backend Builder** — Building multi-cloud orchestrators, distributed rate limiters, and framework-agnostic Java SDKs.
-- 📱 **Android Developer** — Crafting native Android applications implementing Clean Architecture, MVVM, and offline-first persistence.
-- 🤖 **AI Systems Developer** — Building computer vision focus trackers and LLM integrations.
+- **Systems & Backend Builder** — Building multi-cloud orchestrators, distributed rate limiters, and framework-agnostic Java SDKs.
+- **Android Developer** — Crafting native Android applications implementing Clean Architecture, MVVM, and offline-first persistence.
+- **AI Systems Developer** — Building computer vision focus trackers and LLM integrations.
 
 ---
 
-## 📦 Featured Projects
+## Featured Projects
 
 | Project | Description | Tech Stack | Repository |
 |---|---|---|---|
-| ☕ **[Sidd-AI](https://github.com/PRABHUSIDDARTH/sidd-ai)** | Framework-agnostic Java SDK — call any AI model through a single line (`AiClient.chatQuick`). Apache 2.0. | Java, SDK, OpenAI, Gemini, Claude, Grok, NIM, Ollama | [GitHub ↗](https://github.com/PRABHUSIDDARTH/sidd-ai) |
-| ☁️ **[NexusCloud](https://github.com/PRABHUSIDDARTH/NexusCloud)** | BYOC multi-cloud storage orchestration engine abstracting AWS S3, GCS, and Azure Blob behind one API. | Python, Docker, Kubernetes, FastAPI | [GitHub ↗](https://github.com/PRABHUSIDDARTH/NexusCloud) |
-| 🎵 **[Swara App](https://github.com/PRABHUSIDDARTH/SwaraApp)** | Offline native Android music player with Clean Architecture, ExoPlayer playback, and Room DB playlists. | Java, Android, ExoPlayer, Room DB | [GitHub ↗](https://github.com/PRABHUSIDDARTH/SwaraApp) |
-| 👁️ **[Distraction Monitor](https://github.com/PRABHUSIDDARTH/distraction-monitor-v1)** | Computer vision AI tracking Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) in real time. | Python, OpenCV, MediaPipe, TensorFlow | [GitHub ↗](https://github.com/PRABHUSIDDARTH/distraction-monitor-v1) |
-| 🤖 **[AlgoMentor](https://github.com/PRABHUSIDDARTH/AlgoMentor)** | AI DSA coach using Gemini API — Socratic evaluation without spoiling direct answers. | HTML, JavaScript, Gemini API | [GitHub ↗](https://github.com/PRABHUSIDDARTH/AlgoMentor) |
-| 🏛️ **[ElectED](https://github.com/PRABHUSIDDARTH/ElectED)** | Civic literacy portal with voting tutorials, election map simulations, and interactive quizzes. | HTML, CSS, JavaScript | [GitHub ↗](https://github.com/PRABHUSIDDARTH/ElectED) |
+|  **[Sidd-AI](https://github.com/PRABHUSIDDARTH/sidd-ai)** | Framework-agnostic Java SDK — call any AI model through a single line (`AiClient.chatQuick`). Apache 2.0. | Java, SDK, OpenAI, Gemini, Claude, Grok, NIM, Ollama | [GitHub ↗](https://github.com/PRABHUSIDDARTH/sidd-ai) |
+|  **[NexusCloud](https://github.com/PRABHUSIDDARTH/NexusCloud)** | BYOC multi-cloud storage orchestration engine abstracting AWS S3, GCS, and Azure Blob behind one API. | Python, Docker, Kubernetes, FastAPI | [GitHub ↗](https://github.com/PRABHUSIDDARTH/NexusCloud) |
+|  **[Swara App](https://github.com/PRABHUSIDDARTH/SwaraApp)** | Offline native Android music player with Clean Architecture, ExoPlayer playback, and Room DB playlists. | Java, Android, ExoPlayer, Room DB | [GitHub ↗](https://github.com/PRABHUSIDDARTH/SwaraApp) |
+|  **[Distraction Monitor](https://github.com/PRABHUSIDDARTH/distraction-monitor-v1)** | Computer vision AI tracking Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) in real time. | Python, OpenCV, MediaPipe, TensorFlow | [GitHub ↗](https://github.com/PRABHUSIDDARTH/distraction-monitor-v1) |
+|  **[AlgoMentor](https://github.com/PRABHUSIDDARTH/AlgoMentor)** | AI DSA coach using Gemini API — Socratic evaluation without spoiling direct answers. | HTML, JavaScript, Gemini API | [GitHub ↗](https://github.com/PRABHUSIDDARTH/AlgoMentor) |
+|  **[ElectED](https://github.com/PRABHUSIDDARTH/ElectED)** | Civic literacy portal with voting tutorials, election map simulations, and interactive quizzes. | HTML, CSS, JavaScript | [GitHub ↗](https://github.com/PRABHUSIDDARTH/ElectED) |
 
 ---
 
-## 📬 Contact & Connect
+##  Contact & Connect
 
 - **Email**: [prabhusiddarth37@gmail.com](mailto:prabhusiddarth37@gmail.com)
 - **LinkedIn**: [linkedin.com/in/prabhu-siddarth-av](https://www.linkedin.com/in/prabhu-siddarth-av/)
