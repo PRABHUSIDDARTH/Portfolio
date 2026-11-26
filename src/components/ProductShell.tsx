@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
-import { Flagship } from '../content';
+import React, { useEffect, useRef } from 'react';
+import { Flagship, FLAGSHIPS } from '../content';
 import { nextFlagship, useHeroIntro, useMeta, useReveals } from '../lib/motion';
 import { Link } from '../lib/router';
 import { Footer } from './Chrome';
-import Field from './Field';
+import DemoVideo from './DemoVideo';
 
 type Props = {
   f: Flagship;
@@ -21,8 +21,19 @@ export default function ProductShell({ f, links, children }: Props) {
   useHeroIntro(heroRef);
   useMeta(`${f.name} | ${f.tagline} | Prabhu Siddarth`, `${f.summary}`, f.bg);
   const next = nextFlagship(f.slug);
-  const line = f.slug === 'nexuscloud' ? 'rgba(10,22,38,0.14)' : 'rgba(255,255,255,0.13)';
-  const muted = f.slug === 'nexuscloud' ? '#4D5B6E' : 'rgba(236,234,246,0.6)';
+  // The header sits outside <main>, so give it this page's colours.
+  useEffect(() => {
+    const root = document.documentElement.style;
+    root.setProperty('--page-bg', f.bg);
+    root.setProperty('--page-fg', f.fg);
+    return () => {
+      root.removeProperty('--page-bg');
+      root.removeProperty('--page-fg');
+    };
+  }, [f.bg, f.fg]);
+  const light = f.slug === 'nexuscloud' || f.slug === 'coedit';
+  const line = light ? 'rgba(10,22,38,0.14)' : 'rgba(255,255,255,0.13)';
+  const muted = light ? '#4D5B6E' : 'rgba(236,234,246,0.6)';
 
   return (
     <main
@@ -32,9 +43,8 @@ export default function ProductShell({ f, links, children }: Props) {
       style={{ ['--p-bg' as any]: f.bg, ['--p-fg' as any]: f.fg, ['--p-accent' as any]: f.accent, ['--page-line' as any]: line, ['--page-muted' as any]: muted }}
     >
       <section ref={heroRef} className="p-hero" aria-labelledby="p-title">
-        <Field ink={f.fg} accent={f.accent} density={f.slug === 'swara' ? 9 : 12} />
         <div className="p-hero-top mono">
-          <span data-hero-fade>Flagship {f.index} / 03</span>
+          <span data-hero-fade>Flagship {f.index} / {String(FLAGSHIPS.length).padStart(2, '0')}</span>
           <span data-hero-fade className="muted">{f.kicker}</span>
         </div>
         <h1 id="p-title" className="display p-title">
@@ -70,6 +80,13 @@ export default function ProductShell({ f, links, children }: Props) {
           {f.stack.map((s) => <span key={s}>{s}</span>)}
         </div>
       </section>
+
+      {f.video && (
+        <section className="section wrap" style={{ paddingBottom: 0 }} aria-label={`${f.name} demo`}>
+          <SectionHead n="00" label="Demo" right="Press play, sound on" />
+          <DemoVideo {...f.video} name={f.name} />
+        </section>
+      )}
 
       {children}
 

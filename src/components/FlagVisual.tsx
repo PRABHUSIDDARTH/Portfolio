@@ -38,10 +38,37 @@ export default function FlagVisual({ slug, accent }: { slug: Flagship['slug']; a
       </svg>
     );
   }
+  if (slug === 'coedit') {
+    return (
+      <svg viewBox="0 0 400 400" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <pattern id="co-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#121210" strokeWidth="1.4" />
+          </pattern>
+        </defs>
+        <rect width="400" height="400" fill={accent} />
+        <rect x="86" y="74" width="240" height="270" fill="url(#co-hatch)" />
+        <rect x="70" y="58" width="240" height="270" fill="#F2E8D0" stroke="#121210" strokeWidth="3" />
+        {[100, 122, 144, 166, 188].map((y, i) => (
+          <line key={y} x1="96" x2={i % 2 ? 250 : 284} y1={y} y2={y} stroke="#121210" strokeWidth="3" />
+        ))}
+        {[214, 242, 270].map((y) => <line key={y} x1="96" x2="284" y1={y} y2={y} stroke="#121210" strokeOpacity="0.4" />)}
+        {[96, 158, 221, 284].map((x) => <line key={x} x1={x} x2={x} y1="214" y2="270" stroke="#121210" strokeOpacity="0.4" />)}
+        <path d="M232 160 l0 34 l9 -9 l12 3 z" fill="#6F8A4A" stroke="#121210" strokeWidth="2" />
+        <path d="M150 112 l0 34 l9 -9 l12 3 z" fill={accent} stroke="#121210" strokeWidth="2" />
+        {['DRAFT', 'CRITIQUE', 'MERGE'].map((t, i) => (
+          <g key={t} transform={`translate(${70 + i * 84} 346)`}>
+            <rect width="76" height="26" fill="#F2E8D0" stroke="#121210" strokeWidth="2" />
+            <text x="38" y="17" textAnchor="middle" fontFamily="Geist Mono, monospace" fontSize="10" fill="#121210">{t}</text>
+          </g>
+        ))}
+      </svg>
+    );
+  }
   if (slug === 'swara') {
     return (
-      <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', background: 'radial-gradient(circle at 60% 40%, #2a1f3d 0%, #0d0b14 65%)' }}>
-        <div style={{ ['--sw-accent' as any]: accent, ['--sw-dark' as any]: '#0D0B14', width: '62%', maxWidth: 300 }}>
+      <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', background: 'radial-gradient(circle at 60% 40%, #1c1c1e 0%, #000000 65%)' }}>
+        <div style={{ ['--sw-accent' as any]: accent, ['--sw-dark' as any]: '#000000', width: '62%', maxWidth: 300 }}>
           <div className="disc" style={{ width: '100%', margin: 0 }} />
         </div>
         <div className="mono" style={{ position: 'absolute', left: 24, bottom: 22, color: '#F3ECDD', opacity: 0.7 }}>Now playing / Liquid Glass</div>

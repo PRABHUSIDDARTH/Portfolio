@@ -3,16 +3,16 @@ import ProductShell, { SectionHead } from '../components/ProductShell';
 import { flagshipBySlug } from '../content';
 import { Split } from '../lib/motion';
 
-// ColorTheme enum from SwaraApp: accent / dark background pairs.
+// Dark-mode accents from DesignTokens.java in SwaraApp.
 const THEMES = [
-  { name: 'Swara', accent: '#E6A23C', dark: '#0D0B14' },
-  { name: 'Midnight', accent: '#38BDF8', dark: '#070B12' },
-  { name: 'Lavender', accent: '#C084FC', dark: '#0C0714' },
-  { name: 'Champagne', accent: '#FBBF24', dark: '#120D06' },
-  { name: 'Rose', accent: '#F472B6', dark: '#14070B' },
-  { name: 'Ocean', accent: '#2DD4BF', dark: '#051012' },
-  { name: 'Forest', accent: '#34D399', dark: '#051209' },
-  { name: 'Off White', accent: '#8C733E', dark: '#090807' },
+  { name: 'Swara', accent: '#D4AF5A', dark: '#000000' },
+  { name: 'Midnight', accent: '#0A84FF', dark: '#000000' },
+  { name: 'Lavender', accent: '#BF5AF2', dark: '#000000' },
+  { name: 'Champagne', accent: '#FF9F0A', dark: '#000000' },
+  { name: 'Rose', accent: '#FF375F', dark: '#000000' },
+  { name: 'Ocean', accent: '#40C8E0', dark: '#000000' },
+  { name: 'Forest', accent: '#30D158', dark: '#000000' },
+  { name: 'Off White', accent: '#E8C97A', dark: '#000000' },
 ];
 
 const TRACKS = [
@@ -67,9 +67,9 @@ function Phone() {
       </div>
       <div>
         <span className="mono muted">ColorTheme.java / 8 themes</span>
-        <h3 className="display h-md" style={{ margin: '0.8rem 0 1.2rem' }}>Every theme passes WCAG AAA.</h3>
+        <h3 className="display h-md" style={{ margin: '0.8rem 0 1.2rem' }}>Eight themes, light and dark.</h3>
         <p className="body" style={{ marginBottom: '1.6rem' }}>
-          Primary text holds at least 7:1 contrast on every background, secondary text at least 4.5:1. Pick one: the player, the glow and the controls re-tint instantly, just like the app.
+          Each theme has its own accent in both modes. Pick one: the player, the glow and the controls re-tint, as they do in the app.
         </p>
         <div className="themes" role="group" aria-label="Colour themes">
           {THEMES.map((t, i) => (
@@ -88,18 +88,18 @@ function Phone() {
 const LAYERS = [
   { name: 'UI', items: ['Activities', 'Fragments', 'RecyclerView', 'Liquid Glass views'] },
   { name: 'ViewModel', items: ['MusicViewModel', 'LiveData', 'Playback state'] },
-  { name: 'Service', items: ['SwaraPlaybackService', 'Media3 session', 'ExoPlayer'] },
+  { name: 'Service', items: ['SwaraPlaybackService', 'Media3 session', 'ExoPlayer', 'Korokae processor'] },
   { name: 'Repository', items: ['MusicRepository', 'Artwork engine'] },
-  { name: 'Data', items: ['Room v3', 'MediaStore', 'SharedPreferences'] },
+  { name: 'Data', items: ['Room', 'MediaStore', 'SharedPreferences'] },
 ];
 
 const FEATURES = [
-  ['Media3 core', 'Playback runs in a foreground MediaSessionService, so lock screen, Bluetooth and notification controls all speak one protocol.'],
-  ['Room v3 migration', 'Playlists, favourites and history survive schema upgrades through explicit migrations instead of destructive fallbacks.'],
-  ['Artwork engine', 'Embedded art first, then album art, then a generated 2x2 collage for playlists. No grey placeholder squares.'],
-  ['Recycling contract', 'Every list cell fully resets state on bind, so a playing indicator never leaks into a recycled row.'],
-  ['Accessible indicator', 'TalkBack announces which track is playing; the animated bars are decoration on top of that.'],
-  ['Sleep timer', '15, 30, 45 or 60 minutes, or stop at the end of the current song. Plus queue, widget and shuffle.'],
+  ['Korokae karaoke', 'A small streaming network removes vocals inside the audio pipeline. No rendered files, about 23 ms of added latency.'],
+  ['Voice commands', 'Tap Hey Swara and ask to play a song, artist or album, pause or skip. Speech is transcribed on the phone.'],
+  ['Vibe Mode and Autoplay', 'Mood is estimated from the audio on the device, and the queue keeps going with songs that fit.'],
+  ['Swara Wrapped', 'Monthly and yearly recaps as story slides you can share or save as a video, counted on the phone.'],
+  ['Equalizer and sleep timer', 'An in-app equalizer, plus a sleep timer with presets or end of song.'],
+  ['Landscape and widgets', 'A landscape layout with a navigation rail, and horizontal and vertical home-screen widgets.'],
 ];
 
 export default function Swara() {
@@ -135,7 +135,7 @@ export default function Swara() {
       </section>
 
       <section className="section wrap" style={{ paddingTop: 0 }}>
-        <SectionHead n="03" label="Engineering details" right="Small stuff that took the longest" />
+        <SectionHead n="03" label="Features" right="What the app does" />
         <div className="feature-grid">
           {FEATURES.map(([t, d], i) => (
             <div key={t} className="feature" data-reveal>
@@ -148,13 +148,13 @@ export default function Swara() {
       </section>
 
       <section className="section wrap" style={{ paddingTop: 0 }}>
-        <SectionHead n="04" label="Beyond Android" right="SwiftUI port" />
+        <SectionHead n="04" label="The model" right="Korokae" />
         <div className="split2">
-          <Split text="Then I rebuilt it in SwiftUI." className="display h-md" />
+          <Split text="Trained in PyTorch, run in Java." className="display h-md" />
           <div data-reveal>
-            <p className="body">Same eight themes, same glass controls, rewritten natively for iOS. GitHub Actions builds and runs the tests on every push to either app.</p>
+            <p className="body">The vocal-removal network is trained and exported in PyTorch, then runs inside a Media3 audio processor. A parity test checks that the Java engine matches PyTorch. The weights carry non-commercial MUSDB18 terms.</p>
             <pre className="code" style={{ marginTop: '1.6rem' }}>
-              <span className="c">// ColorTheme.java</span>{'\n'}<span className="k">SWARA</span>(<span className="s">"#E6A23C"</span>, <span className="s">"#0D0B14"</span>),{'\n'}<span className="k">MIDNIGHT</span>(<span className="s">"#38BDF8"</span>, <span className="s">"#070B12"</span>),{'\n'}<span className="k">LAVENDER</span>(<span className="s">"#C084FC"</span>, <span className="s">"#0C0714"</span>),{'\n'}<span className="c">// ... 5 more, all AAA</span>
+              <span className="c">// Korokae</span>{'\n'}STFT: <span className="s">1024</span> window, <span className="s">512</span> hop{'\n'}Linear 513 to 256, ReLU{'\n'}<span className="k">causal GRU</span>(256) x 2{'\n'}Linear 256 to 513, sigmoid mask
             </pre>
           </div>
         </div>

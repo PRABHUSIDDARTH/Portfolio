@@ -139,7 +139,7 @@ export default function SiddAi() {
           <Split text="Free to use, fork and ship." className="display h-md" />
           <div data-reveal>
             <p className="body">
-              sidd-ai is open source under the Apache 2.0 licence, so you can drop it into a commercial project without asking. It has passed 600 downloads on Maven Central, and more than 35 organisations pull it into their builds. The code, issues and releases all live on GitHub. If a provider you need is missing, a new route is usually a prefix check and one client class; I review pull requests.
+              sidd-ai is open source under the Apache 2.0 licence, so you can drop it into a commercial project without asking. It has passed 600 downloads on Maven Central. The code, issues and releases all live on GitHub. If a provider you need is missing, a new route is usually a prefix check and one client class; I review pull requests.
             </p>
             <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginTop: '1.6rem' }}>
               <a className="pill solid" href={f.repo} target="_blank" rel="noopener noreferrer"><span className="dot" /> Source on GitHub <span className="arrow">&#8599;</span></a>

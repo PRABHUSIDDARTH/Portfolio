@@ -1,52 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FLAGSHIPS, PROFILE } from '../content';
 import { Link, useRouter } from '../lib/router';
-import { gsap, intro, prefersReducedMotion, startScroll, stopScroll } from '../lib/smooth';
-
-/** Counter preloader. Real readiness = fonts loaded; capped so it never blocks for long. */
-export function Preloader({ onDone }: { onDone: () => void }) {
-  const root = useRef<HTMLDivElement>(null);
-  const count = useRef<HTMLSpanElement>(null);
-  const bar = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    if (prefersReducedMotion) { onDone(); return; }
-    intro.delay = 0.35;
-    stopScroll();
-    const state = { v: 0 };
-    const tl = gsap.timeline({ paused: true });
-    tl.to(state, {
-      v: 100, duration: 1.5, ease: 'power3.inOut',
-      onUpdate: () => {
-        if (count.current) count.current.textContent = String(Math.round(state.v)).padStart(3, '0');
-        if (bar.current) bar.current.style.transform = `scaleX(${state.v / 100})`;
-      },
-    })
-      .to(root.current, { clipPath: 'inset(0% 0% 100% 0%)', duration: 1.0, ease: 'expo.inOut' }, '+=0.1')
-      .add(() => { startScroll(); onDone(); }, '-=0.6');
-    const fonts = (document as any).fonts?.ready ?? Promise.resolve();
-    Promise.race([fonts, new Promise((r) => setTimeout(r, 1200))]).then(() => tl.play());
-    return () => { tl.kill(); startScroll(); };
-  }, []);
-
-  return (
-    <div ref={root} className="preloader" style={{ clipPath: 'inset(0% 0% 0% 0%)' }} aria-hidden="true">
-      <div className="mono" style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <span>Prabhu Siddarth A V</span>
-        <span>Portfolio, 2026</span>
-      </div>
-      <div>
-        <span ref={count} className="preloader-count" style={{ display: 'block', textAlign: 'right' }}>000</span>
-        <div className="preloader-bar"><i ref={bar} /></div>
-      </div>
-    </div>
-  );
-}
+import { gsap, prefersReducedMotion, startScroll, stopScroll } from '../lib/smooth';
 
 export function Nav() {
   const { path } = useRouter();
   const [open, setOpen] = useState(false);
   const menu = useRef<HTMLDivElement>(null);
+  const [solid, setSolid] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [path]);
 
   useEffect(() => setOpen(false), [path]);
   useEffect(() => {
@@ -72,7 +40,7 @@ export function Nav() {
 
   return (
     <>
-      <header className="nav">
+      <header className={solid && !open ? 'nav is-solid' : 'nav'}>
         <Link to="/" className="nav-brand" aria-label="Home">
           <span className="serif">Prabhu Siddarth</span>
         </Link>

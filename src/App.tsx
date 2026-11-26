@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
-import { Cursor, Footer, Nav, Preloader } from './components/Chrome';
+import { Cursor, Footer, Nav } from './components/Chrome';
 import Home from './pages/Home';
 import NexusCloud from './pages/NexusCloud';
 import Swara from './pages/Swara';
 import SiddAi from './pages/SiddAi';
+import Coedit from './pages/Coedit';
 import { Link, RouterProvider, useRouter } from './lib/router';
 import { useMeta } from './lib/motion';
 import { initSmoothScroll } from './lib/smooth';
@@ -29,18 +30,17 @@ function Routes() {
     case '/': return <Home key="home" />;
     case '/nexuscloud': return <NexusCloud key="nexuscloud" />;
     case '/swara': return <Swara key="swara" />;
+    case '/coedit': return <Coedit key="coedit" />;
     case '/sidd-ai': return <SiddAi key="sidd-ai" />;
     default: return <NotFound key="404" />;
   }
 }
 
 export default function App() {
-  const [loaded, setLoaded] = useState(false);
   useEffect(() => initSmoothScroll(), []);
   return (
     <RouterProvider>
       <a href="#main" className="skip-link">Skip to content</a>
-      {!loaded && <Preloader onDone={() => setLoaded(true)} />}
       <Nav />
       <Cursor />
       <Routes />
