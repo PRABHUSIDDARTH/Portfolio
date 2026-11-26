@@ -47,9 +47,12 @@ export default function ProductShell({ f, links, children }: Props) {
           <span data-hero-fade>Flagship {f.index} / {String(FLAGSHIPS.length).padStart(2, '0')}</span>
           <span data-hero-fade className="muted">{f.kicker}</span>
         </div>
-        <h1 id="p-title" className="display p-title">
-          <span data-hero-line><span>{f.name}</span></span>
-        </h1>
+        <div className="p-title-row">
+          <img data-hero-fade className="p-logo" src={f.logo} alt={`${f.name} logo`} width={72} height={72} />
+          <h1 id="p-title" className="display p-title">
+            <span data-hero-line><span>{f.name}</span></span>
+          </h1>
+        </div>
         <p data-hero-fade className="display h-sm italic" style={{ marginTop: '0.6rem' }}>{f.tagline}</p>
         <div className="p-hero-grid">
           <p data-hero-fade className="body" style={{ color: f.fg, opacity: 0.85 }}>{f.summary}</p>
@@ -83,7 +86,7 @@ export default function ProductShell({ f, links, children }: Props) {
 
       {f.video && (
         <section className="section wrap" style={{ paddingBottom: 0 }} aria-label={`${f.name} demo`}>
-          <SectionHead n="00" label="Demo" right="Press play, sound on" />
+          <SectionHead n="00" label="Demo" right={f.video.silent ? 'Press play' : 'Press play, sound on'} />
           <DemoVideo {...f.video} name={f.name} />
         </section>
       )}

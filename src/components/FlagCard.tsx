@@ -29,7 +29,7 @@ export default function FlagCard({ f }: { f: Flagship }) {
       <Link to={f.path} className="flag-card" data-cursor="Enter" style={{ ['--card-bg' as any]: f.bg, ['--card-fg' as any]: f.fg }}>
         <div className="copy">
           <span className="mono">{f.index} / {f.kicker}</span>
-          <div className="name">{f.name}</div>
+          <div className="name"><img className="flag-logo" src={f.logo} alt="" width={64} height={64} loading="lazy" />{f.name}</div>
           <div className="story">
             <p><span className="mono">Before</span>{f.before}</p>
             <p><span className="mono">What I built</span>{f.after}</p>

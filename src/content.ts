@@ -34,7 +34,8 @@ export type Flagship = {
   stack: string[];
   metrics: Metric[];
   repo: string;
-  video?: { src: string; poster: string };
+  video?: { src: string; poster: string; silent?: boolean };
+  logo: string;
   accent: string;
   bg: string;
   fg: string;
@@ -43,6 +44,7 @@ export type Flagship = {
 export const FLAGSHIPS: Flagship[] = [
   {
     slug: 'nexuscloud',
+    logo: '/logos/nexuscloud.svg',
     before: 'Free storage scattered across seven clouds.',
     after: 'One disk with a router that picks the bucket.',
     path: '/nexuscloud',
@@ -66,6 +68,7 @@ export const FLAGSHIPS: Flagship[] = [
   },
   {
     slug: 'sidd-ai',
+    logo: '/logos/sidd-ai.png',
     before: 'A different SDK for every model provider.',
     after: 'One Java call for any of them.',
     path: '/sidd-ai',
@@ -89,6 +92,8 @@ export const FLAGSHIPS: Flagship[] = [
   },
   {
     slug: 'coedit',
+    logo: '/logos/coedit.svg',
+    video: { src: '/media/coedit.mp4', poster: '/media/coedit.webp', silent: true },
     before: 'Docs, sheets, drawings and AI drafts in separate tools.',
     after: 'One realtime workspace with a model council.',
     path: '/coedit',
@@ -112,6 +117,7 @@ export const FLAGSHIPS: Flagship[] = [
   },
   {
     slug: 'swara',
+    logo: '/logos/swara.png',
     before: 'Music apps that want an account and a connection.',
     after: 'An offline player with AI that runs on the phone.',
     path: '/swara',

@@ -472,3 +472,11 @@ a:hover .arrow { transform: translate(3px, -3px); }
 @keyframes deck-eq { from { transform: scaleY(0.3); } to { transform: scaleY(1); } }
 @keyframes deck-blink { 50% { opacity: 0.2; } }
 @media (prefers-reduced-motion: reduce) { .deck-reel, .deck-bar, .deck-colon { animation: none; } }
+
+/* Flagship logos: left of the title */
+.flag-card .name { display: flex; align-items: center; gap: 0.22em; font-size: clamp(2.5rem, 5.6vw, 5.4rem); }
+.flag-logo { flex: none; width: 0.82em; height: 0.82em; object-fit: contain; border-radius: 0.16em; }
+.p-title-row { display: flex; align-items: center; gap: clamp(0.7rem, 2vw, 1.8rem); }
+.p-title-row .p-title { min-width: 0; font-size: clamp(3.4rem, 15.5vw, 15.5rem); }
+.p-logo { flex: none; width: clamp(2.8rem, 10vw, 9rem); height: clamp(2.8rem, 10vw, 9rem); object-fit: contain; border-radius: 18%; }
+.flag-card[href="/coedit"] .demo-ambient { background: #080a0b; }
