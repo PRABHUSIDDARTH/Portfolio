@@ -463,3 +463,12 @@ a:hover .arrow { transform: translate(3px, -3px); }
   *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
   .statement .sw { opacity: 1; }
 }
+
+/* Swara deck concept */
+.deck-reel { transform-origin: 122px 182px; animation: deck-spin 3.2s linear infinite; }
+.deck-bar { transform-box: fill-box; transform-origin: bottom; animation: deck-eq 0.8s ease-in-out infinite alternate; }
+.deck-colon { animation: deck-blink 1s step-end infinite; }
+@keyframes deck-spin { to { transform: rotate(360deg); } }
+@keyframes deck-eq { from { transform: scaleY(0.3); } to { transform: scaleY(1); } }
+@keyframes deck-blink { 50% { opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) { .deck-reel, .deck-bar, .deck-colon { animation: none; } }
