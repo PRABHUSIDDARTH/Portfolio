@@ -118,6 +118,7 @@ export const FLAGSHIPS: Flagship[] = [
   {
     slug: 'swara',
     logo: '/logos/swara.png',
+    video: { src: '/media/swara.mp4', poster: '/media/swara.webp', silent: true },
     before: 'Music apps that want an account and a connection.',
     after: 'An offline player with AI that runs on the phone.',
     path: '/swara',

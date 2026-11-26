@@ -464,15 +464,6 @@ a:hover .arrow { transform: translate(3px, -3px); }
   .statement .sw { opacity: 1; }
 }
 
-/* Swara deck concept */
-.deck-reel { transform-origin: 122px 182px; animation: deck-spin 3.2s linear infinite; }
-.deck-bar { transform-box: fill-box; transform-origin: bottom; animation: deck-eq 0.8s ease-in-out infinite alternate; }
-.deck-colon { animation: deck-blink 1s step-end infinite; }
-@keyframes deck-spin { to { transform: rotate(360deg); } }
-@keyframes deck-eq { from { transform: scaleY(0.3); } to { transform: scaleY(1); } }
-@keyframes deck-blink { 50% { opacity: 0.2; } }
-@media (prefers-reduced-motion: reduce) { .deck-reel, .deck-bar, .deck-colon { animation: none; } }
-
 /* Flagship logos: left of the title */
 .flag-card .name { display: flex; align-items: center; gap: 0.22em; font-size: clamp(2.5rem, 5.6vw, 5.4rem); }
 .flag-logo { flex: none; width: 0.82em; height: 0.82em; object-fit: contain; border-radius: 0.16em; }
@@ -480,3 +471,8 @@ a:hover .arrow { transform: translate(3px, -3px); }
 .p-title-row .p-title { min-width: 0; font-size: clamp(3.4rem, 15.5vw, 15.5rem); }
 .p-logo { flex: none; width: clamp(2.8rem, 10vw, 9rem); height: clamp(2.8rem, 10vw, 9rem); object-fit: contain; border-radius: 18%; }
 .flag-card[href="/coedit"] .demo-ambient { background: #080a0b; }
+
+/* Swara: portrait screen recording */
+.flag-card[href="/swara"] .visual { min-height: 32rem; }
+.flag-card[href="/swara"] .demo-ambient { inset: 1.2rem auto 1.2rem 50%; transform: translateX(-50%); width: auto; height: calc(100% - 2.4rem); aspect-ratio: 540 / 1128; max-width: calc(100% - 2.4rem); border-radius: 22px; background: transparent; }
+.demo[src$="swara.mp4"] { aspect-ratio: 540 / 1128; max-width: 20rem; margin-inline: auto; border-radius: 22px; background: transparent; }

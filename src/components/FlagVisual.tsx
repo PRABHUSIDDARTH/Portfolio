@@ -1,5 +1,4 @@
 import { Flagship } from '../content';
-import DeckArt from './DeckArt';
 
 /** Lightweight, code-native hero visual for each flagship card (no image payload). */
 export default function FlagVisual({ slug, accent }: { slug: Flagship['slug']; accent: string }) {
@@ -68,8 +67,11 @@ export default function FlagVisual({ slug, accent }: { slug: Flagship['slug']; a
   }
   if (slug === 'swara') {
     return (
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 60% 40%, #1c1c1e 0%, #000000 65%)' }}>
-        <DeckArt accent={accent} />
+      <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', background: 'radial-gradient(circle at 60% 40%, #1c1c1e 0%, #000000 65%)' }}>
+        <div style={{ ['--sw-accent' as any]: accent, ['--sw-dark' as any]: '#000000', width: '62%', maxWidth: 300 }}>
+          <div className="disc" style={{ width: '100%', margin: 0 }} />
+        </div>
+        <div className="mono" style={{ position: 'absolute', left: 24, bottom: 22, color: '#F3ECDD', opacity: 0.7 }}>Now playing / Liquid Glass</div>
       </div>
     );
   }
