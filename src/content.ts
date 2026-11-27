@@ -60,7 +60,7 @@ export const FLAGSHIPS: Flagship[] = [
     stack: ['FastAPI', 'Python 3.12', 'PostgreSQL 16', 'Redis 7', 'React 18', 'Docker', 'GCP Cloud Run'],
     metrics: [
       { value: '7', label: 'cloud providers' },
-      { value: '70GB+', label: 'free pool per user' },
+      { value: '70GB+', label: 'across provider free tiers' },
       { value: '0', label: 'bytes proxied' },
     ],
     repo: 'https://github.com/NexusCloud-Orchestra/NexusCloud-Orchestra',
