@@ -3,18 +3,12 @@ import { useGSAP } from '@gsap/react';
 import FlagCard from '../components/FlagCard';
 import Portrait from '../components/Portrait';
 import { Footer } from '../components/Chrome';
-import { CAPABILITIES, FLAGSHIPS, PATH, PROFILE, STATS, WORKS, WorkKind } from '../content';
+import { CAPABILITIES, FLAGSHIPS, PROFILE, WHOAMI, WORKS, WorkKind } from '../content';
 import { Split, useHeroIntro, useMeta, useReveals } from '../lib/motion';
 import { Link } from '../lib/router';
 import { gsap, prefersReducedMotion } from '../lib/smooth';
 
 const KINDS: ('All' | WorkKind)[] = ['All', 'Systems', 'AI', 'Mobile', 'Java', 'Web'];
-
-const PROOF = [
-  { value: '600+', label: 'sidd-ai downloads' },
-  { value: '7', label: 'clouds in NexusCloud' },
-  ...STATS,
-];
 
 const TICKER = ['Python', 'FastAPI', 'Java', 'PostgreSQL', 'Redis', 'Docker', 'GCP Cloud Run', 'React', 'LLM apps'];
 
@@ -35,22 +29,18 @@ function Hero() {
           <a href={PROFILE.resume} download className="pill">Resume <span className="arrow">&darr;</span></a>
           <Link to={PROFILE.linkedin} className="pill">LinkedIn <span className="arrow">&#8599;</span></Link>
         </div>
-        <dl className="hero-proof" data-hero-fade>
-          {PROOF.map((s) => (
-            <div key={s.label}>
-              <dt className="mono">{s.label}</dt>
-              <dd className="serif">{s.value}</dd>
-            </div>
-          ))}
-        </dl>
-        <ol className="hero-path" aria-label="Experience" data-hero-fade>
-          {PATH.map((p) => (
-            <li key={p.title}>
-              <span className="mono">{p.year}</span>
-              <span className="serif">{p.title}</span>
-            </li>
-          ))}
-        </ol>
+        <a className="whoami" href="/whoami.json" target="_blank" rel="noopener" aria-label="About me as JSON" data-hero-fade>
+          <code>
+            <span className="prompt">$</span> curl -L prabhusiddarth.dev/whoami.json{'\n'}
+            {'{\n'}
+            {Object.entries(WHOAMI).map(([k, v], i, all) => (
+              <span key={k} className="kv">
+                &quot;{k}&quot;: {JSON.stringify(v).replace(/","/g, '", "')}{i < all.length - 1 ? ',' : ''}
+              </span>
+            ))}
+            {'}'}
+          </code>
+        </a>
       </div>
       <Portrait />
       <div className="ticker mono" aria-hidden="true">
