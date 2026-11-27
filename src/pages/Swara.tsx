@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ProductShell, { SectionHead } from '../components/ProductShell';
+import SwaraHero from '../components/SwaraHero';
 import { flagshipBySlug } from '../content';
 import { Split } from '../lib/motion';
 
@@ -105,7 +106,7 @@ const FEATURES = [
 export default function Swara() {
   const f = flagshipBySlug('swara');
   return (
-    <ProductShell f={f} links={[{ label: 'View on GitHub', href: f.repo }, { label: 'All my work', href: '/#work' }]}>
+    <ProductShell f={f} heroExtra={<SwaraHero />} links={[{ label: 'View on GitHub', href: f.repo }, { label: 'All my work', href: '/#work' }]}>
       <section className="section wrap">
         <SectionHead n="01" label="The player" right="Interactive" />
         <Split text="Tap play. Then try a different theme." className="display h-md" />

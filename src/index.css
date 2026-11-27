@@ -476,3 +476,24 @@ a:hover .arrow { transform: translate(3px, -3px); }
 .flag-card[href="/swara"] .visual { min-height: 32rem; }
 .flag-card[href="/swara"] .demo-ambient { inset: 1.2rem auto 1.2rem 50%; transform: translateX(-50%); width: auto; height: calc(100% - 2.4rem); aspect-ratio: 540 / 1128; max-width: calc(100% - 2.4rem); border-radius: 22px; background: transparent; }
 .demo[src$="swara.mp4"] { aspect-ratio: 540 / 1128; max-width: 20rem; margin-inline: auto; border-radius: 22px; background: transparent; }
+
+/* Swara hero visual: sits in the empty upper right on wide screens, in the flow below the title otherwise. */
+.p-lead { position: relative; }
+/* Reserve the fan's height so it can never run into the summary below it. */
+.p-lead:has(.sh) { display: flex; flex-direction: column; justify-content: flex-end; min-height: min(56svh, 540px); }
+.sh { position: absolute; right: 0; bottom: 1rem; height: calc(min(56svh, 540px) - 1rem); width: min(44vw, 640px); z-index: 1; display: flex; flex-direction: column; gap: 1.2rem; align-items: center; }
+.sh-fan { position: relative; flex: 1; width: 100%; min-height: 0; }
+.sh-fan img { position: absolute; left: 50%; top: 0; height: 100%; width: auto; max-width: none; cursor: pointer; transition: transform .7s var(--ease), filter .5s; }
+.sh-fan img[data-pos='0'] { transform: translateX(-50%); z-index: 3; filter: drop-shadow(0 30px 30px rgba(0,0,0,.85)); }
+.sh-fan img[data-pos='1'] { transform: translateX(8%) rotate(9deg) scale(.86); z-index: 2; filter: brightness(.55); }
+.sh-fan img[data-pos='2'] { transform: translateX(-108%) rotate(-9deg) scale(.86); z-index: 1; filter: brightness(.55); }
+.sh-row { display: flex; align-items: center; justify-content: center; gap: .8rem; flex-wrap: wrap; }
+.sh-sw { width: 24px; height: 24px; border-radius: 50%; border: 0; cursor: pointer; }
+.sh-sw[aria-pressed='true'] { outline: 1px solid var(--page-fg); outline-offset: 3px; }
+/* Narrow or portrait screens: the title would collide with the fan, so stack them. */
+@media (max-width: 1100px), (max-aspect-ratio: 1/1) {
+  .p-lead:has(.sh) { min-height: 0; }
+  .sh { position: relative; right: auto; bottom: auto; width: 100%; height: 420px; margin: 1.5rem 0 0; }
+}
+@media (max-width: 480px) { .sh { height: 380px; } }
+@media (prefers-reduced-motion: reduce) { .sh-fan img { transition: none; } }

@@ -14,7 +14,7 @@ type Props = {
 };
 
 /** Shared scaffold for flagship pages: themed hero, sections, next-product handoff, contact. */
-export default function ProductShell({ f, links, children }: Props) {
+export default function ProductShell({ f, links, heroExtra, children }: Props) {
   const ref = useRef<HTMLElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   useReveals(ref);
@@ -49,13 +49,16 @@ export default function ProductShell({ f, links, children }: Props) {
           <span data-hero-fade>Flagship {f.index} / {String(FLAGSHIPS.length).padStart(2, '0')}</span>
           <span data-hero-fade className="muted">{f.kicker}</span>
         </div>
-        <div className="p-title-row">
-          <img data-hero-fade className="p-logo" src={f.logo} alt={`${f.name} logo`} width={72} height={72} />
-          <h1 id="p-title" className="display p-title">
-            <span data-hero-line><span>{f.name}</span></span>
-          </h1>
+        <div className="p-lead">
+          <div className="p-title-row">
+            <img data-hero-fade className="p-logo" src={f.logo} alt={`${f.name} logo`} width={72} height={72} />
+            <h1 id="p-title" className="display p-title">
+              <span data-hero-line><span>{f.name}</span></span>
+            </h1>
+          </div>
+          <p data-hero-fade className="display h-sm italic" style={{ marginTop: '0.6rem' }}>{f.tagline}</p>
+          {heroExtra}
         </div>
-        <p data-hero-fade className="display h-sm italic" style={{ marginTop: '0.6rem' }}>{f.tagline}</p>
         <div className="p-hero-grid">
           <p data-hero-fade className="body" style={{ color: f.fg, opacity: 0.85 }}>{f.summary}</p>
           <div data-hero-fade className="p-metrics">
