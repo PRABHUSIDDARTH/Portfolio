@@ -1,0 +1,14 @@
+# Prabhu Siddarth A V
+
+> AI backend engineering student (B.Tech IT, 2024 to 2028) in Coimbatore, India. Looking for AI backend roles.
+
+## Projects
+- [NexusCloud](https://www.prabhusiddarth.dev/nexuscloud): multi-cloud storage router built with FastAPI
+- [sidd-ai](https://www.prabhusiddarth.dev/sidd-ai): Java SDK for calling AI models, on Maven Central
+- [Coedit](https://www.prabhusiddarth.dev/coedit): realtime co-edited docs, sheets and canvases with an AI council
+- [Swara](https://www.prabhusiddarth.dev/swara): offline Android music player
+
+## Links
+- [Resume](https://www.prabhusiddarth.dev/resume.pdf)
+- [GitHub](https://github.com/PRABHUSIDDARTH)
+- [LinkedIn](https://www.linkedin.com/in/prabhu-siddarth-av)

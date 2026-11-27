@@ -21,12 +21,13 @@ function curtainFor(path: string) {
  * History router with a cinematic curtain between states. The outgoing page stays mounted
  * until the curtain fully covers it; only then is the incoming page swapped in underneath.
  */
-export function RouterProvider({ children }: { children: React.ReactNode }) {
-  const [path, setPath] = useState(() => normalizePath(window.location.pathname));
+export function RouterProvider({ children, initialPath }: { children: React.ReactNode; initialPath?: string }) {
+  // initialPath is only passed by the build-time prerender, where there is no window.
+  const [path, setPath] = useState(() => normalizePath(initialPath ?? window.location.pathname));
   const curtain = useRef<HTMLDivElement>(null);
   const label = useRef<HTMLSpanElement>(null);
   const busy = useRef(false);
-  const pendingHash = useRef<string | null>(window.location.hash || null);
+  const pendingHash = useRef<string | null>(typeof window === 'undefined' ? null : window.location.hash || null);
 
   useEffect(() => {
     const onPop = () => {
