@@ -517,3 +517,65 @@ pre.fan-text { white-space: pre; font-size: max(10px, 3.6cqw); }
 .faq dt { font-weight: 500; margin-bottom: 0.5rem; }
 .faq dd { color: var(--page-muted); max-width: 60ch; }
 @media (max-width: 700px) { .faq { grid-template-columns: minmax(0, 1fr); } }
+
+/* work grid */
+.wgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.8rem, 1.8vw, 1.6rem); align-items: start; padding-bottom: 3rem; }
+.wgrid > :nth-child(even) { transform-origin: top; margin-top: 3rem; }
+.wcard { display: flex; flex-direction: column; border: 2px solid var(--ink); border-radius: 6px; overflow: hidden; background: var(--paper); color: var(--ink); transition: box-shadow 0.4s var(--ease), translate 0.4s var(--ease); }
+.wcard:hover, .wcard:focus-visible { translate: -4px -4px; box-shadow: 8px 8px 0 var(--ink); }
+.wcover { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; border-bottom: 2px solid var(--ink); background: var(--ink); color: var(--paper); }
+.wimg { position: absolute; inset: 0; width: 100%; height: 100%; object-position: left top; transition: scale 0.6s var(--ease); }
+.wimg.cover { object-fit: cover; object-position: center; }
+.wimg.contain { object-fit: contain; object-position: center; padding: 8%; }
+.wcard:hover .wimg, .wcard:focus-visible .wimg { scale: 1.06; }
+.wsvg > svg, .wfx > svg { display: block; width: 100%; height: 100%; }
+.wstack { position: absolute; left: 0; right: 0; bottom: 0; padding: 0.7rem; background: var(--ink); color: var(--paper); font-size: 11px; translate: 0 101%; transition: translate 0.45s var(--ease); }
+.wcard:hover .wstack, .wcard:focus-visible .wstack { translate: 0 0; }
+.wbody { display: grid; gap: 0.35rem; padding: 0.9rem; }
+.wname { font-family: var(--serif); font-size: clamp(1.3rem, 2vw, 1.9rem); line-height: 1.05; overflow-wrap: anywhere; }
+.wkind { font-size: 11px; text-transform: uppercase; }
+.wblurb { font-size: 14px; line-height: 1.45; }
+@media (max-width: 1000px) { .wgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .wgrid > :nth-child(even) { margin-top: 1.5rem; } .wcover { aspect-ratio: 1; } .wbody { padding: 0.65rem; } .wblurb { font-size: 12.5px; } .wstack { display: none; } }
+@media (prefers-reduced-motion: reduce) { .wcard, .wimg, .wstack { transition: none; } }
+
+/* work grid animations: only while a card is hovered, focused or (on phones) in view */
+.wcard [class*='a-'] { transform-box: fill-box; transform-origin: center; }
+.d1 { --d: 0.12s; } .d2 { --d: 0.24s; } .d3 { --d: 0.36s; } .d4 { --d: 0.48s; }
+.wcard.play [class*='a-'] { animation-duration: 1.8s; animation-iteration-count: infinite; animation-delay: var(--d, 0s); animation-timing-function: ease-in-out; }
+.wcard.play .a-lift { animation-name: a-lift; }
+.wcard.play .a-rise { animation-name: a-rise; }
+.wcard.play .a-hop { animation-name: a-lift-big; }
+.wcard.play .a-bob { animation-name: a-lift-big; }
+.wcard.play .a-drop { animation-name: a-drop; }
+.wcard.play .a-blink { animation-name: a-blink; }
+.wcard.play .a-pop { animation-name: a-pop; }
+.wcard.play .a-lock { animation-name: a-lock; }
+.wcard.play .a-scan { animation-name: a-scan; }
+.wcard.play .a-wink { animation-name: a-wink; animation-duration: 2.4s; }
+.wcard.play .a-look { animation-name: a-look; animation-duration: 2.4s; }
+.wcard.play .a-tick { animation-name: a-blink; }
+.wcard.play .a-draw { stroke-dasharray: 1; animation-name: a-draw; animation-fill-mode: backwards; }
+.wcard.play .a-needle { animation-name: a-needle; transform-origin: left bottom; }
+.wcard.play .a-ping { animation-name: a-ping; }
+.wcard .a-steam, .wcard .a-ping, .wcard .a-note, .wcard .a-ask, .wcard .a-scan { opacity: 0; }
+.wcard.play .a-steam { animation-name: a-steam; }
+.wcard.play .a-note { animation-name: a-note; animation-duration: 2.2s; }
+.wcard.play .a-ask { animation-name: a-ask; animation-duration: 2.4s; animation-fill-mode: backwards; }
+@keyframes a-lift { 50% { transform: translateY(-1.8px); } }
+@keyframes a-lift-big { 40% { transform: translateY(-16px); } }
+@keyframes a-rise { 50% { transform: translateY(-3px) scale(1.35); } }
+@keyframes a-drop { 50% { transform: translateY(16px); } }
+@keyframes a-blink { 50% { opacity: 0.2; } }
+@keyframes a-pop { 0%, 100% { transform: scale(1); } 20% { transform: scale(0.82); } 40% { transform: scale(1.1); } 60% { transform: scale(1); } }
+@keyframes a-lock { 50% { transform: scale(0.86); } }
+@keyframes a-scan { 0% { opacity: 0; transform: translateY(0); } 15%, 85% { opacity: 1; } 100% { opacity: 0; transform: translateY(144px); } }
+@keyframes a-wink { 0%, 40%, 56%, 100% { transform: scaleY(1); } 48% { transform: scaleY(0.1); } }
+@keyframes a-look { 20% { transform: translateX(-14px); } 70% { transform: translateX(14px); } }
+@keyframes a-draw { 0% { stroke-dashoffset: 1; } 55%, 100% { stroke-dashoffset: 0; } }
+@keyframes a-needle { 0%, 100% { transform: rotate(0); } 35% { transform: rotate(-62deg); } 70% { transform: rotate(28deg); } }
+@keyframes a-ping { 0% { opacity: 1; transform: scale(0.5); } 100% { opacity: 0; transform: scale(2.2); } }
+@keyframes a-steam { 0% { opacity: 0; transform: translateY(8px); } 35% { opacity: 0.9; } 100% { opacity: 0; transform: translateY(-12px); } }
+@keyframes a-note { 0% { opacity: 0; transform: translateY(6px) rotate(-12deg); } 25% { opacity: 1; } 100% { opacity: 0; transform: translateY(-34px) rotate(14deg); } }
+@keyframes a-ask { 0% { opacity: 0; transform: translateY(10px) scale(0.6); } 20% { opacity: 1; transform: none; } 50% { opacity: 1; transform: translateY(-5px) rotate(6deg); } 80% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(-6px); } }
+@media (prefers-reduced-motion: reduce) { .wcard [class*='a-'] { animation: none !important; } }
