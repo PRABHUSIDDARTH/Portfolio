@@ -188,10 +188,14 @@ export const WORKS: Work[] = [
     stack: ['Python', 'Flask', 'Gemini API'], href: 'https://github.com/PRABHUSIDDARTH/AlgoMentor' },
 ];
 
-export const STATS: Metric[] = [
-  { value: '4', label: 'engineers on the team I lead' },
-  { value: '8.3', label: 'CGPA' },
-];
+// Printed on the home page and served as /whoami.json; a test keeps the two identical.
+export const WHOAMI = {
+  built: 'Coedit, docs + AI council',
+  shipped: 'sidd-ai, 600+ downloads',
+  interned: ['Azure AI', 'IBM'],
+  studying: 'B.Tech IT, 2028, CGPA 8.3',
+  looking_for: 'AI backend roles',
+};
 
 export const CAPABILITIES: { title: string; items: string[] }[] = [
   { title: 'Backend & Systems', items: ['Java 17 / 21', 'Spring Boot', 'FastAPI', 'PostgreSQL', 'Redis', 'REST / OpenAPI'] },

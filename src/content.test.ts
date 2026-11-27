@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { FLAGSHIPS, PATH, PROFILE, WORKS } from './content';
+import { FLAGSHIPS, PATH, PROFILE, WHOAMI, WORKS } from './content';
 
 describe('content', () => {
   it('lists four flagships in order, each with before and after', () => {
@@ -28,5 +28,11 @@ describe('content', () => {
   });
   it('keeps four non-flagship works', () => {
     expect(WORKS.filter((w) => !w.route).map((w) => w.name)).toEqual(['Return Risk Scorer', 'PyRAG', 'RetinaFace Inference', 'AlgoMentor']);
+  });
+  it('serves the same whoami data the home page prints', () => {
+    expect(JSON.parse(readFileSync('public/whoami.json', 'utf8'))).toEqual(WHOAMI);
+  });
+  it('keeps the NexusCloud lead role off the whoami card', () => {
+    expect(JSON.stringify(WHOAMI)).not.toMatch(/nexus|lead|team/i);
   });
 });
