@@ -510,3 +510,10 @@ pre.fan-text { white-space: pre; font-size: max(10px, 3.6cqw); }
 @media (prefers-reduced-motion: reduce) { .fan-card { transition: none; } }
 .fan-card .fan-text { box-sizing: border-box; height: 100%; display: flex; flex-direction: column; justify-content: center; }
 .fan-card:not([data-pos='0']) .fan-text { visibility: hidden; }
+
+/* Home: quick answers */
+.faq { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem var(--gutter); }
+.faq > div { border-top: 1px solid var(--page-line); padding-top: 1rem; }
+.faq dt { font-weight: 500; margin-bottom: 0.5rem; }
+.faq dd { color: var(--page-muted); max-width: 60ch; }
+@media (max-width: 700px) { .faq { grid-template-columns: minmax(0, 1fr); } }

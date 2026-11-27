@@ -2,6 +2,7 @@ import React, { RefObject, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap, intro, prefersReducedMotion } from './smooth';
 import { FLAGSHIPS } from '../content';
+import { PAGES, SITE } from '../seo';
 
 gsap.registerPlugin(useGSAP);
 
@@ -72,13 +73,18 @@ export function Split({ text, as = 'h2', className, id }: SplitProps) {
 export function useMeta(title: string, description: string, theme = '#EEEAE2') {
   useEffect(() => {
     document.title = title;
-    const url = window.location.origin + window.location.pathname;
+    const path = window.location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+    // Always the one canonical host, whichever deployment served the page.
+    const url = SITE + path;
+    const image = SITE + (PAGES[path] ?? PAGES['/']).image;
     const set = (sel: string, attr: string, value: string) =>
       document.head.querySelector(sel)?.setAttribute(attr, value);
     set('meta[name="description"]', 'content', description);
     set('meta[property="og:title"]', 'content', title);
     set('meta[property="og:description"]', 'content', description);
     set('meta[property="og:url"]', 'content', url);
+    set('meta[property="og:image"]', 'content', image);
+    set('meta[name="twitter:image"]', 'content', image);
     set('meta[name="twitter:title"]', 'content', title);
     set('meta[name="twitter:description"]', 'content', description);
     set('meta[name="theme-color"]', 'content', theme);

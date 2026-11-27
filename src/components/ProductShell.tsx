@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Flagship, FLAGSHIPS } from '../content';
 import { nextFlagship, useHeroIntro, useMeta, useReveals } from '../lib/motion';
 import { Link } from '../lib/router';
+import { PAGES } from '../seo';
 import { Footer } from './Chrome';
 import DemoVideo from './DemoVideo';
 
@@ -19,7 +20,7 @@ export default function ProductShell({ f, links, heroExtra, children }: Props) {
   const heroRef = useRef<HTMLElement>(null);
   useReveals(ref);
   useHeroIntro(heroRef);
-  useMeta(`${f.name} | ${f.tagline} | Prabhu Siddarth`, `${f.summary}`, f.bg);
+  useMeta(PAGES[f.path].title, PAGES[f.path].description, f.bg);
   const next = nextFlagship(f.slug);
   // A deployed product site becomes the first, primary button.
   const actions = f.site ? [{ label: 'Visit site', href: f.site }, ...links] : links;

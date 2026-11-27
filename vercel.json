@@ -1,6 +1,4 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/((?!api/|assets/|.*\\..*).*)", "destination": "/" }
-  ]
+  "trailingSlash": false
 }

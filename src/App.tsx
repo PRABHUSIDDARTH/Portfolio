@@ -36,10 +36,10 @@ function Routes() {
   }
 }
 
-export default function App() {
+export default function App({ path }: { path?: string }) {
   useEffect(() => initSmoothScroll(), []);
   return (
-    <RouterProvider>
+    <RouterProvider initialPath={path}>
       <a href="#main" className="skip-link">Skip to content</a>
       <Nav />
       <Cursor />

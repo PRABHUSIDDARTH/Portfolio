@@ -6,6 +6,8 @@ import { Footer } from '../components/Chrome';
 import { CAPABILITIES, FLAGSHIPS, PROFILE, WHOAMI, WORKS, WorkKind } from '../content';
 import { Split, useHeroIntro, useMeta, useReveals } from '../lib/motion';
 import { Link } from '../lib/router';
+import { FAQ } from '../faq';
+import { PAGES } from '../seo';
 import { gsap, prefersReducedMotion } from '../lib/smooth';
 
 const KINDS: ('All' | WorkKind)[] = ['All', 'Systems', 'AI', 'Mobile', 'Java', 'Web'];
@@ -170,13 +172,26 @@ function Capabilities() {
   );
 }
 
+function Answers() {
+  return (
+    <section className="section wrap" aria-labelledby="faq-title">
+      <h2 id="faq-title" className="display h-md" style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>Quick answers</h2>
+      <dl className="faq">
+        {FAQ.map(([q, a]) => (
+          <div key={q} data-reveal>
+            <dt>{q}</dt>
+            <dd>{a}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}
+
 export default function Home() {
   const ref = useRef<HTMLElement>(null);
   useReveals(ref);
-  useMeta(
-    'Prabhu Siddarth A V | AI Backend Engineer (student)',
-    'Prabhu Siddarth A V, B.Tech IT student in Coimbatore, NexusCloud, sidd-ai, Coedit and Swara.',
-  );
+  useMeta(PAGES['/'].title, PAGES['/'].description);
   return (
     <main ref={ref} id="main" className="page">
       <Hero />
@@ -184,6 +199,7 @@ export default function Home() {
       <Capabilities />
       <WorksIndex />
       <Statement />
+      <Answers />
       <Footer />
     </main>
   );

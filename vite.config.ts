@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({isSsrBuild}) => {
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
@@ -11,6 +11,8 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+    // Bundle dependencies into the prerender build so Node does not have to resolve their ESM quirks.
+    ssr: { noExternal: true },
     optimizeDeps: {
       include: ['three', 'lenis', 'gsap', '@gsap/react'],
     },
@@ -18,7 +20,7 @@ export default defineConfig(() => {
       rollupOptions: {
         output: {
           // Long-lived vendor chunks: three.js and the motion stack change far less than content.
-          manualChunks: { three: ['three'], motion: ['gsap', '@gsap/react', 'lenis'] },
+          manualChunks: isSsrBuild ? undefined : { three: ['three'], motion: ['gsap', '@gsap/react', 'lenis'] },
         },
       },
     },
