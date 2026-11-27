@@ -26,8 +26,8 @@ describe('content', () => {
     expect(existsSync(`public${v.src}`)).toBe(true);
     expect(existsSync(`public${v.poster}`)).toBe(true);
   });
-  it('keeps four non-flagship works', () => {
-    expect(WORKS.filter((w) => !w.route).map((w) => w.name)).toEqual(['Return Risk Scorer', 'PyRAG', 'RetinaFace Inference', 'AlgoMentor']);
+  it('keeps the listed non-flagship works', () => {
+    expect(WORKS.filter((w) => !w.route).map((w) => w.name)).toEqual(['Return Risk Scorer', 'PyRAG', 'RetinaFace Inference', 'AlgoMentor', 'Distraction Monitor', 'sidd-bot']);
   });
   it('serves the same whoami data the home page prints', () => {
     expect(JSON.parse(readFileSync('public/whoami.json', 'utf8'))).toEqual(WHOAMI);

@@ -186,6 +186,12 @@ export const WORKS: Work[] = [
   { name: 'AlgoMentor', kind: 'AI', year: '2026',
     blurb: 'DSA coach that reads your code and asks the next question instead of handing over the answer.',
     stack: ['Python', 'Flask', 'Gemini API'], href: 'https://github.com/PRABHUSIDDARTH/AlgoMentor' },
+  { name: 'Distraction Monitor', kind: 'AI', year: '2026',
+    blurb: 'Checks your screen every few seconds, uses a CNN to spot Shorts and Reels, and counts them against a limit you set.',
+    stack: ['Python', 'TensorFlow', 'Flask'], href: 'https://github.com/PRABHUSIDDARTH/distraction-monitor-v1' },
+  { name: 'sidd-bot', kind: 'Java', year: '2026',
+    blurb: 'Java chatbot framework built on sidd-ai, with conversation memory in SQLite and runtime model switching.',
+    stack: ['Java', 'sidd-ai', 'SQLite', 'JUnit'], href: 'https://github.com/PRABHUSIDDARTH/sidd-bot' },
 ];
 
 // Printed on the home page and served as /whoami.json; a test keeps the two identical.

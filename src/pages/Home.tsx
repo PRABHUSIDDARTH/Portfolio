@@ -8,6 +8,7 @@ import { Split, useHeroIntro, useMeta, useReveals } from '../lib/motion';
 import { Link } from '../lib/router';
 import { FAQ } from '../faq';
 import { PAGES } from '../seo';
+import WorkCard from '../components/WorkCard';
 import { gsap, prefersReducedMotion } from '../lib/smooth';
 
 const KINDS: ('All' | WorkKind)[] = ['All', 'Systems', 'AI', 'Mobile', 'Java', 'Web'];
@@ -108,7 +109,7 @@ function WorksIndex() {
   useGSAP(
     () => {
       if (prefersReducedMotion) return;
-      gsap.from('.row', { autoAlpha: 0, y: 16, duration: 0.6, stagger: 0.025, ease: 'expo.out' });
+      gsap.from('.wgrid > *', { autoAlpha: 0, y: 24, duration: 0.6, stagger: 0.04, ease: 'expo.out' });
     },
     { scope: listRef, dependencies: [kind], revertOnUpdate: true },
   );
@@ -128,19 +129,11 @@ function WorksIndex() {
           </button>
         ))}
       </div>
-      <div ref={listRef} role="list">
-        {list.map((w, i) => (
-          <Link key={w.name} to={w.route ?? w.href} className="row" role="listitem" data-cursor={w.route ? 'Open' : 'GitHub'}>
-            <span className="num mono muted">{String(i + 1).padStart(2, '0')}</span>
-            <span>
-              <span className="rname">{w.name}</span>
-              {w.route && <span className="tag">Flagship</span>}
-              {w.org && <span className="mono muted" style={{ display: 'block', marginTop: 4 }}>{w.org}</span>}
-            </span>
-            <span className="rblurb muted" style={{ fontSize: 14.5 }}>{w.blurb}</span>
-            <span className="rstack mono muted">{w.stack.join(' / ')}</span>
-            <span className="mono" style={{ textAlign: 'right' }}>{w.kind} <span className="arrow">&#8599;</span></span>
-          </Link>
+      <div ref={listRef} className="wgrid" role="list">
+        {list.map((w) => (
+          <div key={w.name} role="listitem">
+            <WorkCard work={w} />
+          </div>
         ))}
       </div>
     </section>
