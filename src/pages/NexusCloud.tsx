@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
 import ProductShell, { SectionHead } from '../components/ProductShell';
+import HeroFan from '../components/HeroFan';
+import { NEXUS_FAN } from '../components/heroFans';
 import { flagshipBySlug } from '../content';
 import { Split } from '../lib/motion';
 
@@ -120,7 +122,7 @@ const API = [
 export default function NexusCloud() {
   const f = flagshipBySlug('nexuscloud');
   return (
-    <ProductShell f={f} links={[{ label: 'View on GitHub', href: f.repo }, { label: 'Original prototype', href: 'https://github.com/PRABHUSIDDARTH/NexusCloud' }]}>
+    <ProductShell f={f} heroExtra={<HeroFan items={NEXUS_FAN} />} links={[{ label: 'View on GitHub', href: f.repo }, { label: 'Original prototype', href: 'https://github.com/PRABHUSIDDARTH/NexusCloud' }]}>
       <section className="section wrap">
         <SectionHead n="01" label="The problem" right="5 CLIs, 5 consoles, 5 credential sets" />
         <div className="split2">

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import ProductShell, { SectionHead } from '../components/ProductShell';
+import HeroFan from '../components/HeroFan';
+import { SIDD_FAN } from '../components/heroFans';
 import { flagshipBySlug } from '../content';
 import { Split } from '../lib/motion';
 
@@ -32,7 +34,7 @@ function Playground() {
   const hit = route(model);
   const safe = model.replace(/["\\]/g, '');
   return (
-    <div style={{ display: 'grid', gap: '1.4rem' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1.4rem' }}>
       <label className="play-input">
         <span className="muted">model =</span>
         <input value={model} onChange={(e) => setModel(e.target.value)} spellCheck={false} aria-label="Model name" placeholder="type any model id" />
@@ -91,6 +93,7 @@ export default function SiddAi() {
   const f = flagshipBySlug('sidd-ai');
   return (
     <ProductShell
+      heroExtra={<HeroFan items={SIDD_FAN} />}
       f={f}
       links={[
         { label: 'Star it on GitHub', href: f.repo },

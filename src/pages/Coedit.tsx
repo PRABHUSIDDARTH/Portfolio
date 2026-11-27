@@ -1,4 +1,6 @@
 import ProductShell, { SectionHead } from '../components/ProductShell';
+import HeroFan from '../components/HeroFan';
+import { COEDIT_FAN } from '../components/heroFans';
 import FlagVisual from '../components/FlagVisual';
 import { flagshipBySlug } from '../content';
 import { Split } from '../lib/motion';
@@ -31,7 +33,7 @@ const LIMITS = [
 export default function Coedit() {
   const f = flagshipBySlug('coedit');
   return (
-    <ProductShell f={f} links={[{ label: 'View on GitHub', href: f.repo }]}>
+    <ProductShell f={f} heroExtra={<HeroFan items={COEDIT_FAN} />} links={[{ label: 'View on GitHub', href: f.repo }]}>
       <section className="section wrap">
         <SectionHead n="01" label="What works" right="From the README" />
         <div className="split2">
