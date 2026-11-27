@@ -299,12 +299,16 @@ a:hover .arrow { transform: translate(3px, -3px); }
    Flagship product pages
    ========================================================================== */
 .product { --page-bg: var(--p-bg); --page-fg: var(--p-fg); --page-accent: var(--p-accent); background: var(--p-bg); color: var(--p-fg); }
-.p-hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 7rem var(--gutter) var(--gutter); position: relative; overflow: hidden; }
+.p-hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 5.5rem var(--gutter) var(--gutter); position: relative; overflow: hidden; }
 .p-hero-top { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: auto; padding-top: 1rem; }
 .p-title { font-size: clamp(4.5rem, 19vw, 19rem); }
-.p-hero-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--gutter); padding-top: 1.6rem; border-top: 1px solid var(--page-line); margin-top: 1.4rem; align-items: end; }
-.p-metrics { display: flex; gap: clamp(1.5rem, 3vw, 3rem); }
-.p-metrics b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1; letter-spacing: -0.02em; }
+.p-hero-grid { display: grid; grid-template-columns: 1.2fr 1.6fr .7fr; gap: var(--gutter); padding-top: 1.2rem; border-top: 1px solid var(--page-line); margin-top: .9rem; align-items: end; }
+.p-story { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); margin: 1rem 0 0; padding-top: .8rem; border-top: 1px solid var(--page-line); }
+.p-story dd { margin: .4rem 0 0; font-family: var(--serif); font-size: clamp(1.25rem, 1.7vw, 1.6rem); line-height: 1.15; }
+.p-story div:last-child dt { color: var(--p-accent); }
+@media (max-width: 640px) { .p-story { grid-template-columns: 1fr; gap: .9rem; } }
+.p-metrics { display: flex; flex-wrap: wrap; gap: 1rem clamp(1.2rem, 2.4vw, 2.6rem); }
+.p-metrics b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem, 4.2vw, 4.2rem); line-height: 1; letter-spacing: -0.02em; }
 .p-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .p-stack span { font-family: var(--mono); font-size: 11px; padding: 0.35rem 0.7rem; border: 1px solid var(--page-line); border-radius: 999px; }
 .panel { border: 1px solid var(--page-line); border-radius: 18px; padding: clamp(1.2rem, 2.6vw, 2.2rem); position: relative; overflow: hidden; }

@@ -60,6 +60,10 @@ export default function ProductShell({ f, links, heroExtra, children }: Props) {
           <p data-hero-fade className="display h-sm italic" style={{ marginTop: '0.6rem' }}>{f.tagline}</p>
           {heroExtra}
         </div>
+        <dl data-hero-fade className="p-story">
+          <div><dt className="mono muted">Before</dt><dd>{f.before}</dd></div>
+          <div><dt className="mono muted">What I built</dt><dd>{f.after}</dd></div>
+        </dl>
         <div className="p-hero-grid">
           <p data-hero-fade className="body" style={{ color: f.fg, opacity: 0.85 }}>{f.summary}</p>
           <div data-hero-fade className="p-metrics">
