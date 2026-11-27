@@ -34,6 +34,8 @@ export type Flagship = {
   stack: string[];
   metrics: Metric[];
   repo: string;
+  /** Standalone product website, if one is deployed. */
+  site?: string;
   video?: { src: string; poster: string; silent?: boolean };
   logo: string;
   accent: string;
@@ -102,7 +104,7 @@ export const FLAGSHIPS: Flagship[] = [
     kicker: 'Realtime workspace + AI council',
     tagline: 'Write together. Let a council of models draft the spec.',
     summary:
-      'Co-edit docs and spreadsheets live, draw on canvases beside them, and let an AI council on your own API key turn a rough idea into an engineering handoff pack. It runs locally with Docker Compose and is not deployed yet.',
+      'Co-edit docs and spreadsheets live, draw on canvases beside them, and let an AI council on your own API key turn a rough idea into an engineering handoff pack. It runs locally with Docker Compose. The app itself is not hosted yet.',
     role: 'Solo build',
     stack: ['Next.js', 'TipTap', 'Yjs / Hocuspocus', 'FastAPI', 'PostgreSQL 16', 'Excalidraw', 'HyperFormula', 'Docker Compose'],
     metrics: [
@@ -111,6 +113,7 @@ export const FLAGSHIPS: Flagship[] = [
       { value: '30s', label: 'live role re-check' },
     ],
     repo: 'https://github.com/PRABHUSIDDARTH/coedit',
+    site: 'https://coedit-website.vercel.app',
     accent: '#FF4D1C',
     bg: '#F2E8D0',
     fg: '#121210',
@@ -133,9 +136,10 @@ export const FLAGSHIPS: Flagship[] = [
     metrics: [
       { value: '~23ms', label: 'karaoke latency added' },
       { value: '8', label: 'colour themes' },
-      { value: '0', label: 'network calls' },
+      { value: 'No', label: 'internet permission' },
     ],
     repo: 'https://github.com/PRABHUSIDDARTH/SwaraApp',
+    site: 'https://swaraapp-website.vercel.app',
     accent: '#D4AF5A',
     bg: '#000000',
     fg: '#F2F2F7',

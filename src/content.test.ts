@@ -8,6 +8,12 @@ describe('content', () => {
     expect(FLAGSHIPS.map((f) => f.index)).toEqual(['01', '02', '03', '04']);
     expect(FLAGSHIPS.every((f) => f.before && f.after)).toBe(true);
   });
+  it('links the two deployed product sites over https', () => {
+    expect(FLAGSHIPS.filter((f) => f.site).map((f) => [f.slug, f.site])).toEqual([
+      ['coedit', 'https://coedit-website.vercel.app'],
+      ['swara', 'https://swaraapp-website.vercel.app'],
+    ]);
+  });
   it('uses the approved headline and drops the unproven claim', () => {
     expect(PROFILE.headline).toBe('AI Backend Engineer in the making. B.Tech IT, 2028.');
     expect(JSON.stringify({ FLAGSHIPS, WORKS, PATH })).not.toMatch(/organisations/);

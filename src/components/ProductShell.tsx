@@ -21,6 +21,8 @@ export default function ProductShell({ f, links, children }: Props) {
   useHeroIntro(heroRef);
   useMeta(`${f.name} | ${f.tagline} | Prabhu Siddarth`, `${f.summary}`, f.bg);
   const next = nextFlagship(f.slug);
+  // A deployed product site becomes the first, primary button.
+  const actions = f.site ? [{ label: 'Visit site', href: f.site }, ...links] : links;
   // The header sits outside <main>, so give it this page's colours.
   useEffect(() => {
     const root = document.documentElement.style;
@@ -65,7 +67,7 @@ export default function ProductShell({ f, links, children }: Props) {
             ))}
           </div>
           <div data-hero-fade style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', alignItems: 'flex-start' }}>
-            {links.map((l, i) => (
+            {actions.map((l, i) => (
               <Link key={l.href} to={l.href} className={i === 0 ? 'pill solid' : 'pill'}>
                 {i === 0 && <span className="dot" />} {l.label} <span className="arrow">&#8599;</span>
               </Link>
