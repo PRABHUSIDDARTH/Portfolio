@@ -15,18 +15,18 @@ const flag = (slug: string, title: string, description: string): Page => ({
 export const PAGES: Record<string, Page> = {
   '/': {
     title: 'Prabhu Siddarth A V | AI Backend Engineer, Coimbatore',
-    description: 'AI backend engineering student in Coimbatore building with Python, FastAPI and Java: NexusCloud, sidd-ai, Coedit and Swara. Resume and contact.',
+    description: 'AI backend student in Coimbatore. Built sidd-ai (600+ Maven Central downloads), NexusCloud (7 clouds, one disk), Coedit and Swara.',
     image: '/og/home.jpg',
     theme: '#EEEAE2',
   },
-  '/nexuscloud': flag('nexuscloud', 'NexusCloud: multi-cloud storage router | Prabhu Siddarth',
-    'NexusCloud pools the free tiers of seven cloud providers into one disk with a FastAPI scoring router and presigned uploads.'),
-  '/sidd-ai': flag('sidd-ai', 'sidd-ai: Java LLM SDK on Maven Central | Prabhu Siddarth',
-    'Open-source Java SDK that calls OpenAI, Claude, Gemini, Ollama and more through one method. Apache 2.0, on Maven Central.'),
-  '/coedit': flag('coedit', 'Coedit: self-hosted docs, sheets and AI council | Prabhu Siddarth',
-    'Realtime co-edited docs, spreadsheets and canvases with an optional AI council. Built with Next.js, Yjs and FastAPI.'),
-  '/swara': flag('swara', 'Swara: offline Android music player | Prabhu Siddarth',
-    'Offline Android music player with on-device vocal removal, voice commands and eight themes. No internet permission.'),
+  '/nexuscloud': flag('nexuscloud', 'NexusCloud: 7 cloud free tiers, one disk | Prabhu Siddarth',
+    '70GB+ of free tiers across 7 clouds as one disk. A FastAPI router picks the bucket; files upload direct, 0 bytes proxied.'),
+  '/sidd-ai': flag('sidd-ai', 'sidd-ai: Java LLM SDK, 600+ downloads | Prabhu Siddarth',
+    '600+ Maven Central downloads. One Java call for 8 AI providers: OpenAI, Claude, Gemini, Ollama and more. Apache 2.0.'),
+  '/coedit': flag('coedit', 'Coedit: realtime docs, sheets + AI council | Prabhu Siddarth',
+    'Self-hosted realtime docs, sheets and canvases. An AI council turns a rough idea into a 3-file engineering handoff pack.'),
+  '/swara': flag('swara', 'Swara: offline karaoke music player | Prabhu Siddarth',
+    'Offline Android music player with live on-device vocal removal (~23ms added latency). No account, no internet permission.'),
 };
 
 const url = (p: string) => SITE + p;
@@ -80,7 +80,8 @@ const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').repl
 /** The <head> block the prerender writes for a route. */
 export function headFor(path: string) {
   const p = PAGES[path];
-  const img = SITE + p.image;
+  // Bump when the images change: LinkedIn, X and WhatsApp cache previews by URL.
+  const img = `${SITE}${p.image}?v=2`;
   const meta = (attr: string, key: string, value: string) => `<meta ${attr}="${key}" content="${esc(value)}" />`;
   return [
     `<title>${esc(p.title)}</title>`,
