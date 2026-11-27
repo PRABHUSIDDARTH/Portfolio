@@ -497,3 +497,29 @@ a:hover .arrow { transform: translate(3px, -3px); }
 }
 @media (max-width: 480px) { .sh { height: 380px; } }
 @media (prefers-reduced-motion: reduce) { .sh-fan img { transition: none; } }
+
+/* Hero fan for the other flagships. Stacked by default; beside the title on wide landscape screens. */
+.fan { width: 100%; max-width: 560px; margin-top: 1.8rem; }
+.fan-stage { position: relative; aspect-ratio: 16 / 11; }
+.fan-card { position: absolute; left: 8%; top: 0; width: 84%; height: 92%; overflow: hidden; cursor: pointer; container-type: inline-size; background: var(--p-bg); color: var(--p-fg); border: 1px solid var(--page-line); border-radius: 14px; box-shadow: 0 24px 40px -22px rgba(0, 0, 0, .55); transition: transform .7s var(--ease), opacity .5s; }
+.fan-card[data-pos='0'] { z-index: 3; }
+.fan-card[data-pos='1'] { z-index: 2; transform: translate(9%, 6%) rotate(5deg) scale(.9); opacity: .75; }
+.fan-card[data-pos='2'] { z-index: 1; transform: translate(-9%, 6%) rotate(-5deg) scale(.9); opacity: .75; }
+.fan-shot { width: 100%; height: 100%; object-fit: contain; }
+.fan-text { margin: 0; padding: 6cqw; font-family: var(--mono); font-size: max(10px, 3.4cqw); line-height: 1.5; white-space: normal; }
+pre.fan-text { white-space: pre; font-size: max(10px, 3.6cqw); }
+.fan-text h4 { font: 400 max(14px, 5.4cqw)/1.2 var(--serif); margin: 0 0 4cqw; }
+.fan-text dl { margin: 0; }
+.fan-text dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 2cqw 0; border-top: 1px solid var(--page-line); }
+.fan-text dd { margin: 0; text-align: right; color: var(--page-muted); }
+.fan-row { display: flex; justify-content: center; gap: .5rem; flex-wrap: wrap; margin-top: .6rem; }
+.fan-note { text-align: center; margin-top: .6rem; }
+@media (min-width: 1101px) and (min-aspect-ratio: 1001/1000) {
+  .p-lead:has(.fan) { min-height: calc(min(38vw, 580px) * .6875 + 5rem); display: flex; flex-direction: column; justify-content: flex-end; }
+  .p-lead:has(.fan) .p-title { font-size: clamp(3.4rem, 9vw, 10.5rem); }
+  .p-lead:has(.fan) .p-title-row, .p-lead:has(.fan) .p-title-row + p { max-width: calc(100% - min(38vw, 580px) - 2rem); }
+  .fan { position: absolute; right: 0; bottom: 0; width: min(38vw, 580px); max-width: none; margin: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .fan-card { transition: none; } }
+.fan-card .fan-text { box-sizing: border-box; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+.fan-card:not([data-pos='0']) .fan-text { visibility: hidden; }
